@@ -9,12 +9,17 @@
 /* Begin PBXBuildFile section */
 		26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410500250F52FC00DD6383 /* AppDelegate.swift */; };
 		26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410502250F52FC00DD6383 /* SceneDelegate.swift */; };
-		26410505250F52FC00DD6383 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410504250F52FC00DD6383 /* ViewController.swift */; };
+		26410505250F52FC00DD6383 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410504250F52FC00DD6383 /* LoginViewController.swift */; };
 		26410508250F52FC00DD6383 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26410506250F52FC00DD6383 /* Main.storyboard */; };
 		2641050A250F52FC00DD6383 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26410509250F52FC00DD6383 /* Assets.xcassets */; };
 		2641050D250F52FC00DD6383 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2641050B250F52FC00DD6383 /* LaunchScreen.storyboard */; };
 		26410518250F52FC00DD6383 /* Covid_19Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410517250F52FC00DD6383 /* Covid_19Tests.swift */; };
 		26410523250F52FC00DD6383 /* Covid_19UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410522250F52FC00DD6383 /* Covid_19UITests.swift */; };
+		26410532250F96DF00DD6383 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410531250F96DF00DD6383 /* RoundedTextField.swift */; };
+		26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410533250F9A8100DD6383 /* RoundedButton.swift */; };
+		26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410535250FA8D900DD6383 /* RoundedImageView.swift */; };
+		26410538250FB16A00DD6383 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410537250FB16A00DD6383 /* SignUpViewController.swift */; };
+		2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410539250FC73300DD6383 /* HideNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +43,7 @@
 		264104FD250F52FC00DD6383 /* Covid-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26410500250F52FC00DD6383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26410502250F52FC00DD6383 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		26410504250F52FC00DD6383 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		26410504250F52FC00DD6383 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		26410507250F52FC00DD6383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		26410509250F52FC00DD6383 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2641050C250F52FC00DD6383 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +54,11 @@
 		2641051E250F52FC00DD6383 /* Covid-19UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Covid-19UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26410522250F52FC00DD6383 /* Covid_19UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Covid_19UITests.swift; sourceTree = "<group>"; };
 		26410524250F52FC00DD6383 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26410531250F96DF00DD6383 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
+		26410533250F9A8100DD6383 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		26410535250FA8D900DD6383 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		26410537250FB16A00DD6383 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		26410539250FC73300DD6383 /* HideNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +109,15 @@
 		264104FF250F52FC00DD6383 /* Covid-19 */ = {
 			isa = PBXGroup;
 			children = (
+				26410530250F966E00DD6383 /* UIClass */,
 				26410500250F52FC00DD6383 /* AppDelegate.swift */,
 				26410502250F52FC00DD6383 /* SceneDelegate.swift */,
-				26410504250F52FC00DD6383 /* ViewController.swift */,
+				26410504250F52FC00DD6383 /* LoginViewController.swift */,
 				26410506250F52FC00DD6383 /* Main.storyboard */,
 				26410509250F52FC00DD6383 /* Assets.xcassets */,
 				2641050B250F52FC00DD6383 /* LaunchScreen.storyboard */,
 				2641050E250F52FC00DD6383 /* Info.plist */,
+				26410537250FB16A00DD6383 /* SignUpViewController.swift */,
 			);
 			path = "Covid-19";
 			sourceTree = "<group>";
@@ -126,6 +138,17 @@
 				26410524250F52FC00DD6383 /* Info.plist */,
 			);
 			path = "Covid-19UITests";
+			sourceTree = "<group>";
+		};
+		26410530250F966E00DD6383 /* UIClass */ = {
+			isa = PBXGroup;
+			children = (
+				26410531250F96DF00DD6383 /* RoundedTextField.swift */,
+				26410533250F9A8100DD6383 /* RoundedButton.swift */,
+				26410535250FA8D900DD6383 /* RoundedImageView.swift */,
+				26410539250FC73300DD6383 /* HideNavigationBar.swift */,
+			);
+			path = UIClass;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26410505250F52FC00DD6383 /* ViewController.swift in Sources */,
+				26410505250F52FC00DD6383 /* LoginViewController.swift in Sources */,
+				2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */,
+				26410538250FB16A00DD6383 /* SignUpViewController.swift in Sources */,
+				26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */,
+				26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */,
 				26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */,
 				26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */,
+				26410532250F96DF00DD6383 /* RoundedTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
