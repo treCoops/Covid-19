@@ -22,6 +22,14 @@ class UpdateViewController: UIViewController {
 
         tempView.roundView()
         surveyView.roundView()
+        
+        AddFloatingButton()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     @IBAction func tempratureChanged(_ sender: UISlider) {
@@ -65,7 +73,32 @@ class UpdateViewController: UIViewController {
             
         }
         
+    }
+    
+    func AddFloatingButton(){
+        let button = UIButton(type: .custom) // let preferred over var here
+        button.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
+
+        button.addTarget(self, action: #selector(onFloatingNewsButtonPressed), for: .touchUpInside)
+        self.view.addSubview(button)
         
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+          let widthContraints =  NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 40)
+          
+          let heightContraints = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 40)
+          
+          let xContraints = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.bottomMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottomMargin, multiplier: 1, constant: -20)
+          
+          let yContraints = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: -20)
+          
+          NSLayoutConstraint.activate([heightContraints,widthContraints,xContraints,yContraints])
+    }
+    
+    @objc
+    func onFloatingNewsButtonPressed(){
+        self.present(PopupDoalog.generatePopupAlert(), animated: true)
     }
   
 }

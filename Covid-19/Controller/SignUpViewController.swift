@@ -29,6 +29,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
         imgProfilePic.roundImageView()
+        self.navigationController?.changeNavBarTintColor(tintColor: #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1))
+        
     }
     
 

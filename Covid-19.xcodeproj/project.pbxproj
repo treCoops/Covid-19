@@ -26,6 +26,14 @@
 		2641054425107B7D00DD6383 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054325107B7D00DD6383 /* UpdateViewController.swift */; };
 		2641054625107B8D00DD6383 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054525107B8D00DD6383 /* SettingViewController.swift */; };
 		2641054925109F5300DD6383 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054825109F5300DD6383 /* RoundedView.swift */; };
+		26640E322510B5D800DFCB11 /* PopupDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E312510B5D800DFCB11 /* PopupDialog.swift */; };
+		26640E342510B81500DFCB11 /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E332510B81500DFCB11 /* UserSession.swift */; };
+		26640E362510B99600DFCB11 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E352510B99600DFCB11 /* Constraints.swift */; };
+		26640E382510D0AD00DFCB11 /* RoundedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E372510D0AD00DFCB11 /* RoundedLabel.swift */; };
+		26640E3A25111A9E00DFCB11 /* SympthonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E3925111A9E00DFCB11 /* SympthonsViewController.swift */; };
+		26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */; };
+		26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E492511525C00DFCB11 /* NewsCell.swift */; };
+		26640E4C2511525C00DFCB11 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26640E4A2511525C00DFCB11 /* NewsCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +79,14 @@
 		2641054325107B7D00DD6383 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
 		2641054525107B8D00DD6383 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		2641054825109F5300DD6383 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
+		26640E312510B5D800DFCB11 /* PopupDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDialog.swift; sourceTree = "<group>"; };
+		26640E332510B81500DFCB11 /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		26640E352510B99600DFCB11 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
+		26640E372510D0AD00DFCB11 /* RoundedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedLabel.swift; sourceTree = "<group>"; };
+		26640E3925111A9E00DFCB11 /* SympthonsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SympthonsViewController.swift; sourceTree = "<group>"; };
+		26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNavBarTintColor.swift; sourceTree = "<group>"; };
+		26640E492511525C00DFCB11 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		26640E4A2511525C00DFCB11 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,12 +170,14 @@
 		26410530250F966E00DD6383 /* UIClass */ = {
 			isa = PBXGroup;
 			children = (
+				26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */,
 				26410531250F96DF00DD6383 /* RoundedTextField.swift */,
 				26410533250F9A8100DD6383 /* RoundedButton.swift */,
 				26410535250FA8D900DD6383 /* RoundedImageView.swift */,
 				26410539250FC73300DD6383 /* HideNavigationBar.swift */,
 				2641053B250FCBE700DD6383 /* KeyboardToolBar.swift */,
 				2641054825109F5300DD6383 /* RoundedView.swift */,
+				26640E372510D0AD00DFCB11 /* RoundedLabel.swift */,
 			);
 			path = UIClass;
 			sourceTree = "<group>";
@@ -168,6 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				2641053E250FD6AA00DD6383 /* Validator.swift */,
+				26640E312510B5D800DFCB11 /* PopupDialog.swift */,
+				26640E332510B81500DFCB11 /* UserSession.swift */,
+				26640E352510B99600DFCB11 /* Constraints.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -180,6 +201,8 @@
 				2641054125107B6D00DD6383 /* HomeViewController.swift */,
 				2641054325107B7D00DD6383 /* UpdateViewController.swift */,
 				2641054525107B8D00DD6383 /* SettingViewController.swift */,
+				26640E3925111A9E00DFCB11 /* SympthonsViewController.swift */,
+				26640E492511525C00DFCB11 /* NewsCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -187,6 +210,7 @@
 		264105472510850A00DD6383 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				26640E4A2511525C00DFCB11 /* NewsCell.xib */,
 				26410506250F52FC00DD6383 /* Main.storyboard */,
 				2641050B250F52FC00DD6383 /* LaunchScreen.storyboard */,
 			);
@@ -299,6 +323,7 @@
 			files = (
 				2641050D250F52FC00DD6383 /* LaunchScreen.storyboard in Resources */,
 				2641050A250F52FC00DD6383 /* Assets.xcassets in Resources */,
+				26640E4C2511525C00DFCB11 /* NewsCell.xib in Resources */,
 				26410508250F52FC00DD6383 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,18 +351,25 @@
 			files = (
 				26410505250F52FC00DD6383 /* LoginViewController.swift in Sources */,
 				2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */,
+				26640E382510D0AD00DFCB11 /* RoundedLabel.swift in Sources */,
+				26640E362510B99600DFCB11 /* Constraints.swift in Sources */,
+				26640E3A25111A9E00DFCB11 /* SympthonsViewController.swift in Sources */,
 				2641054925109F5300DD6383 /* RoundedView.swift in Sources */,
 				2641053F250FD6AA00DD6383 /* Validator.swift in Sources */,
 				2641054625107B8D00DD6383 /* SettingViewController.swift in Sources */,
 				26410538250FB16A00DD6383 /* SignUpViewController.swift in Sources */,
 				2641053C250FCBE700DD6383 /* KeyboardToolBar.swift in Sources */,
+				26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */,
 				26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */,
 				26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */,
+				26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */,
 				2641054225107B6D00DD6383 /* HomeViewController.swift in Sources */,
 				26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */,
 				26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */,
 				26410532250F96DF00DD6383 /* RoundedTextField.swift in Sources */,
+				26640E322510B5D800DFCB11 /* PopupDialog.swift in Sources */,
 				2641054425107B7D00DD6383 /* UpdateViewController.swift in Sources */,
+				26640E342510B81500DFCB11 /* UserSession.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
