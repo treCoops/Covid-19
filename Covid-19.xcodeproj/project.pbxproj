@@ -20,6 +20,12 @@
 		26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410535250FA8D900DD6383 /* RoundedImageView.swift */; };
 		26410538250FB16A00DD6383 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410537250FB16A00DD6383 /* SignUpViewController.swift */; };
 		2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410539250FC73300DD6383 /* HideNavigationBar.swift */; };
+		2641053C250FCBE700DD6383 /* KeyboardToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641053B250FCBE700DD6383 /* KeyboardToolBar.swift */; };
+		2641053F250FD6AA00DD6383 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641053E250FD6AA00DD6383 /* Validator.swift */; };
+		2641054225107B6D00DD6383 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054125107B6D00DD6383 /* HomeViewController.swift */; };
+		2641054425107B7D00DD6383 /* UpdateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054325107B7D00DD6383 /* UpdateViewController.swift */; };
+		2641054625107B8D00DD6383 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054525107B8D00DD6383 /* SettingViewController.swift */; };
+		2641054925109F5300DD6383 /* RoundedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2641054825109F5300DD6383 /* RoundedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +65,12 @@
 		26410535250FA8D900DD6383 /* RoundedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
 		26410537250FB16A00DD6383 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		26410539250FC73300DD6383 /* HideNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideNavigationBar.swift; sourceTree = "<group>"; };
+		2641053B250FCBE700DD6383 /* KeyboardToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardToolBar.swift; sourceTree = "<group>"; };
+		2641053E250FD6AA00DD6383 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		2641054125107B6D00DD6383 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2641054325107B7D00DD6383 /* UpdateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateViewController.swift; sourceTree = "<group>"; };
+		2641054525107B8D00DD6383 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		2641054825109F5300DD6383 /* RoundedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,15 +121,14 @@
 		264104FF250F52FC00DD6383 /* Covid-19 */ = {
 			isa = PBXGroup;
 			children = (
+				264105472510850A00DD6383 /* View */,
+				2641054025107A5100DD6383 /* Controller */,
+				2641053D250FD68D00DD6383 /* Helper */,
 				26410530250F966E00DD6383 /* UIClass */,
 				26410500250F52FC00DD6383 /* AppDelegate.swift */,
 				26410502250F52FC00DD6383 /* SceneDelegate.swift */,
-				26410504250F52FC00DD6383 /* LoginViewController.swift */,
-				26410506250F52FC00DD6383 /* Main.storyboard */,
 				26410509250F52FC00DD6383 /* Assets.xcassets */,
-				2641050B250F52FC00DD6383 /* LaunchScreen.storyboard */,
 				2641050E250F52FC00DD6383 /* Info.plist */,
-				26410537250FB16A00DD6383 /* SignUpViewController.swift */,
 			);
 			path = "Covid-19";
 			sourceTree = "<group>";
@@ -147,8 +158,39 @@
 				26410533250F9A8100DD6383 /* RoundedButton.swift */,
 				26410535250FA8D900DD6383 /* RoundedImageView.swift */,
 				26410539250FC73300DD6383 /* HideNavigationBar.swift */,
+				2641053B250FCBE700DD6383 /* KeyboardToolBar.swift */,
+				2641054825109F5300DD6383 /* RoundedView.swift */,
 			);
 			path = UIClass;
+			sourceTree = "<group>";
+		};
+		2641053D250FD68D00DD6383 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				2641053E250FD6AA00DD6383 /* Validator.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		2641054025107A5100DD6383 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				26410504250F52FC00DD6383 /* LoginViewController.swift */,
+				26410537250FB16A00DD6383 /* SignUpViewController.swift */,
+				2641054125107B6D00DD6383 /* HomeViewController.swift */,
+				2641054325107B7D00DD6383 /* UpdateViewController.swift */,
+				2641054525107B8D00DD6383 /* SettingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		264105472510850A00DD6383 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				26410506250F52FC00DD6383 /* Main.storyboard */,
+				2641050B250F52FC00DD6383 /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -284,12 +326,18 @@
 			files = (
 				26410505250F52FC00DD6383 /* LoginViewController.swift in Sources */,
 				2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */,
+				2641054925109F5300DD6383 /* RoundedView.swift in Sources */,
+				2641053F250FD6AA00DD6383 /* Validator.swift in Sources */,
+				2641054625107B8D00DD6383 /* SettingViewController.swift in Sources */,
 				26410538250FB16A00DD6383 /* SignUpViewController.swift in Sources */,
+				2641053C250FCBE700DD6383 /* KeyboardToolBar.swift in Sources */,
 				26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */,
 				26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */,
+				2641054225107B6D00DD6383 /* HomeViewController.swift in Sources */,
 				26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */,
 				26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */,
 				26410532250F96DF00DD6383 /* RoundedTextField.swift in Sources */,
+				2641054425107B7D00DD6383 /* UpdateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
