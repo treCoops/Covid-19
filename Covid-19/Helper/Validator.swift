@@ -42,7 +42,7 @@ struct  Validator{
     }
     
     func isValidName(_ name: String) -> Bool{
-        let nameRegEx = "[A-Za-z]{2,50}"
+        let nameRegEx = "[A-Za-z ]{2,50}"
         let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
 
         return namePred.evaluate(with: name)

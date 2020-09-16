@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PopupDoalog {
+class PopupDialog {
     static func generatePopupAlert() -> UIAlertController {
         let alert = UIAlertController(title: "Push News", message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancl", style: .cancel, handler: nil))
@@ -25,6 +25,12 @@ class PopupDoalog {
             }
         }))
         
+        return alert
+    }
+    
+    static func generateAlert(title: String, msg: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return alert
     }
 }

@@ -13,7 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     
     var validator = Validator()
-    var fireabaseAuthManager = FirebaseAuthManager()
+    var fireabaseManager = FirebaseManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtEmail.delegate = self
         txtPassword.delegate = self
         
-        fireabaseAuthManager.delegete = self
+        fireabaseManager.delegete = self
         
     }
     
@@ -54,17 +54,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        fireabaseAuthManager.createUser(email: txtEmail.text ?? "", password: txtPassword.text ?? "")
+        fireabaseManager.signInUser(email: txtEmail.text ?? "", password: txtPassword.text ?? "")
     }
     
 }
 
-extension LoginViewController : FirebaseAuthActions{
-    func doneAuthentication(uid: String?) {
+extension LoginViewController : FirebaseActions{
+    func operationSuccess(uid: String?) {
         print("UID: \(uid ?? "")")
     }
     
-    func failedAuthetication(error: Error) {
+    func operationFailed(error: Error) {
         print("Error: \(error)")
     }
 }

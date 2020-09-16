@@ -21,13 +21,18 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var imgProfilePic: UIImageView!
     
     var validator = Validator()
+    var fireabaseManager = FirebaseManager()
     
     var imagePicker : ImagePicker!
+    
+    var userRole : String = UserRole.USER_TYPE_STUDENT
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         imgProfilePic.roundImageView()
+        
+        fireabaseManager.delegete = self
         
         txtName.delegate = self
         txtMail.delegate = self
@@ -55,21 +60,17 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         btnRoleStaff.isSelected = false
         btnRoleStudent.isSelected = false
         sender.isSelected = true
-    }
-    
-    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        if txtName.text != "" {
-            txtName.placeholder = "Search"
-            return true
+        
+        if sender.currentTitle == "Staff"{
+            userRole = UserRole.USER_TYPE_STAFF
         }else{
-            txtName.placeholder = "Enter a city name"
-            return false
+            userRole = UserRole.USER_TYPE_STUDENT
         }
     }
 
     @IBAction func signUpPressed(_ sender: UIButton) {
         
-        if validator.isEmpty(txtName.text ?? "") {
+        if validator.isEmpty(txtName.text?.trimmingCharacters(in: .whitespaces) ?? "") {
             txtName.text = ""
             txtName.attributedPlaceholder = NSAttributedString(string: "Enter name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1))])
             return
@@ -136,6 +137,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
+        fireabaseManager.createUser(email: txtMail.text ?? "", password: txtPassword.text ?? "", name: txtName.text ?? "", nic: txtNIC.text ?? "", proPic: imgProfilePic.image, role: userRole)
+        
     }
     
     @objc
@@ -154,5 +157,15 @@ extension SignUpViewController : ImagePickerDelegate {
         }
         
         self.imgProfilePic.image = image
+    }
+}
+
+extension SignUpViewController : FirebaseActions{
+    func operationSuccess() {
+        self.present(PopupDialog.generateAlert(title: "Success", msg: "User created Successfully.!"), animated: true)
+    }
+    
+    func operationFailed(error: Error) {
+        self.present(PopupDialog.generateAlert(title: "Error", msg: error.localizedDescription), animated: true)
     }
 }

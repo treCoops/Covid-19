@@ -101,7 +101,7 @@ class UpdateViewController: UIViewController {
     
     @objc
     func onFloatingNewsButtonPressed(){
-        self.present(PopupDoalog.generatePopupAlert(), animated: true)
+        self.present(PopupDialog.generatePopupAlert(), animated: true)
     }
     
     @objc
