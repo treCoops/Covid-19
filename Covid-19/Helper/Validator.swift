@@ -33,11 +33,19 @@ struct  Validator{
         }
     }
     
+    
     func isValidNIC(_ nic: String) -> Bool {
         let NICRegEx = "^([0-9]{9}[x|X|v|V]|[0-9]{12})$"
         let NicPred = NSPredicate(format:"SELF MATCHES %@", NICRegEx)
 
         return NicPred.evaluate(with: nic)
+    }
+    
+    func isValidName(_ name: String) -> Bool{
+        let nameRegEx = "[A-Za-z]{2,50}"
+        let namePred = NSPredicate(format:"SELF MATCHES %@", nameRegEx)
+
+        return namePred.evaluate(with: name)
     }
     
     func isEqual(_ one: String, _ two: String) -> Bool {

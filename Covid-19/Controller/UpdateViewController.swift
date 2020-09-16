@@ -15,7 +15,7 @@ class UpdateViewController: UIViewController {
     @IBOutlet weak var txtTemprature: UILabel!
     @IBOutlet weak var txtC: UILabel!
     @IBOutlet weak var slideTemprature: UISlider!
-    @IBOutlet weak var btnUpdate: RoundedButton!
+    @IBOutlet weak var btnUpdate: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,9 @@ class UpdateViewController: UIViewController {
         
         AddFloatingButton()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        let gestureRecognizion = UITapGestureRecognizer(target: self, action: #selector(self.callSympthonsView))
+        self.surveyView.addGestureRecognizer(gestureRecognizion)
         
     }
     
@@ -99,6 +102,11 @@ class UpdateViewController: UIViewController {
     @objc
     func onFloatingNewsButtonPressed(){
         self.present(PopupDoalog.generatePopupAlert(), animated: true)
+    }
+    
+    @objc
+    func callSympthonsView(){
+        self.performSegue(withIdentifier: Seagus.sympthonsSegue, sender: nil)
     }
   
 }

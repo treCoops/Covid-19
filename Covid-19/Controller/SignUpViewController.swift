@@ -9,6 +9,7 @@
 import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtMail: UITextField!
     @IBOutlet weak var txtNIC: UITextField!
@@ -21,15 +22,26 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var validator = Validator()
     
+    var imagePicker : ImagePicker!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imgProfilePic.roundImageView()
+        
         txtName.delegate = self
         txtMail.delegate = self
         txtNIC.delegate = self
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
-        imgProfilePic.roundImageView()
+        
         self.navigationController?.changeNavBarTintColor(tintColor: #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1))
+        
+        self.imagePicker = ImagePicker(presentationController: self, delegate: self)
+        
+        let gestureRecognizion = UITapGestureRecognizer(target: self, action: #selector(self.pickImage))
+        self.imgProfilePic.addGestureRecognizer(gestureRecognizion)
+        
         
     }
     
@@ -58,7 +70,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signUpPressed(_ sender: UIButton) {
         
         if validator.isEmpty(txtName.text ?? "") {
+            txtName.text = ""
             txtName.attributedPlaceholder = NSAttributedString(string: "Enter name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1))])
+            return
+        }
+        
+        if !validator.isValidName(txtName.text ?? ""){
+            txtName.text = ""
+            txtName.attributedPlaceholder = NSAttributedString(string: "Enter a valid name!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1))])
             return
         }
         
@@ -119,4 +138,21 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    @objc
+    func pickImage(_ sender: UIImageView){
+       self.imagePicker.present(from: sender)
+    }
+    
+}
+
+extension SignUpViewController : ImagePickerDelegate {
+    func didSelect(image: UIImage?) {
+        
+        if image == nil {
+            imgProfilePic.image = #imageLiteral(resourceName: "User")
+            return
+        }
+        
+        self.imgProfilePic.image = image
+    }
 }

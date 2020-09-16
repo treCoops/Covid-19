@@ -34,6 +34,7 @@
 		26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */; };
 		26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E492511525C00DFCB11 /* NewsCell.swift */; };
 		26640E4C2511525C00DFCB11 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26640E4A2511525C00DFCB11 /* NewsCell.xib */; };
+		269761542511EDBC00ADE8A0 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNavBarTintColor.swift; sourceTree = "<group>"; };
 		26640E492511525C00DFCB11 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		26640E4A2511525C00DFCB11 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +139,7 @@
 		264104FF250F52FC00DD6383 /* Covid-19 */ = {
 			isa = PBXGroup;
 			children = (
+				269761522511EDA200ADE8A0 /* Util */,
 				264105472510850A00DD6383 /* View */,
 				2641054025107A5100DD6383 /* Controller */,
 				2641053D250FD68D00DD6383 /* Helper */,
@@ -215,6 +218,14 @@
 				2641050B250F52FC00DD6383 /* LaunchScreen.storyboard */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		269761522511EDA200ADE8A0 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */,
+			);
+			path = Util;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,6 +368,7 @@
 				2641054925109F5300DD6383 /* RoundedView.swift in Sources */,
 				2641053F250FD6AA00DD6383 /* Validator.swift in Sources */,
 				2641054625107B8D00DD6383 /* SettingViewController.swift in Sources */,
+				269761542511EDBC00ADE8A0 /* ImagePickerDelegate.swift in Sources */,
 				26410538250FB16A00DD6383 /* SignUpViewController.swift in Sources */,
 				2641053C250FCBE700DD6383 /* KeyboardToolBar.swift in Sources */,
 				26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */,

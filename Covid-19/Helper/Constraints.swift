@@ -9,7 +9,8 @@
 import Foundation
 
 struct Seagus {
-    var loginToHome = "loginToHome"
+    static var loginToHome = "loginToHome"
+    static var sympthonsSegue = "sympthonsSegue"
 }
 
 struct UserRelated {
