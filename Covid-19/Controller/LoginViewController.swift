@@ -13,6 +13,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var txtPassword: UITextField!
     
     var validator = Validator()
+    var fireabaseAuthManager = FirebaseAuthManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +21,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         txtEmail.delegate = self
         txtPassword.delegate = self
+        
+        fireabaseAuthManager.delegete = self
         
     }
     
@@ -50,7 +53,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             txtPassword.attributedPlaceholder = NSAttributedString(string: "Minimum lenght is 6!", attributes: [NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 1, green: 0, blue: 0, alpha: 1))])
             return
         }
+        
+        fireabaseAuthManager.createUser(email: txtEmail.text ?? "", password: txtPassword.text ?? "")
     }
     
+}
+
+extension LoginViewController : FirebaseAuthActions{
+    func doneAuthentication(uid: String?) {
+        print("UID: \(uid ?? "")")
+    }
+    
+    func failedAuthetication(error: Error) {
+        print("Error: \(error)")
+    }
 }
 
