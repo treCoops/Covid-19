@@ -41,8 +41,7 @@ class FirebaseManager{
                         "role": role
                     ]
                     
-                    self.saveUserInDB(data: User)
-                    
+                    self.uploadProfilePic(image: proPic!, data: User)
                     
                 }
             }
@@ -51,6 +50,10 @@ class FirebaseManager{
     
     func getDBReference() -> DatabaseReference{
         return Database.database().reference()
+    }
+    
+    func getStorageReference() -> StorageReference{
+        return Storage.storage().reference()
     }
     
     func saveUserInDB(data: Dictionary<String,String>){
@@ -63,6 +66,33 @@ class FirebaseManager{
                 self.delegete?.operationSuccess()
             }
         }
+    }
+    
+    func uploadProfilePic(image: UIImage, data: Dictionary<String, String>){
+        
+        if let uploadImage = image.jpegData(compressionQuality: 0.5){
+            let storageRef = self.getStorageReference()
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpeg"
+            
+            storageRef.child("userProfilePics\(data["uid"] ?? "")").putData(uploadImage, metadata: metaData) { (metadata, error) in
+
+              storageRef.child("userProfilePics\(data["uid"] ?? "")").downloadURL { (url, error) in
+                if let error = error {
+                    self.delegete?.operationFailed(error: error)
+                }
+                guard let downloadURL = url else {
+                  return
+                }
+                
+                var User = data
+                User["profileUrl"] = downloadURL.absoluteString
+                self.saveUserInDB(data: User)
+                }
+            }
+            
+        }
+        
     }
     
     
