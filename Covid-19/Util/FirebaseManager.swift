@@ -262,7 +262,66 @@ class FirebaseManager{
                 self.delegete?.operationSuccess()
             }
         }
+    }
+    
+    func saveTempData(temp: Double, lat: Double, long: Double, notify: Bool){
+        let dbRef = self.getDBReference()
+        if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID){
+            
+            let userTempData = [
+                "uid": uid,
+                "temp": temp,
+                "lat": lat,
+                "long": long
+                ] as [String : Any]
+            
+            dbRef.child("UserTempData").child(uid).setValue(userTempData) {
+                (error: Error?, ref: DatabaseReference) in
+                if let error = error {
+                    self.delegete?.operationFailed(error: error)
+                }else{
+                    if notify{
+                        self.delegete?.operationSuccessTemp()
+                    }
+                }
+            }
+        }
+    }
+    
+    func getNewsData(){
+        var news : [String] = []
+        let ref = self.getDBReference()
+        var initialRead = true
+        
+        ref.child("Notifications").observe(.childAdded, with: {
+            snapshot in
+            if initialRead == false {
+                if let newsDict = snapshot.value as? [String : Any] {
+                    let data = newsDict["news"] as! String
+                    news.append(data)
+                    self.delegete?.onNewsDataLoaded(news: news)
+                }
+            }
+            
+        })
+        
+        ref.child("Notifications").observeSingleEvent(of: .value, with: { snapshot in
+            
+            initialRead = false
+            
+            if let newsDict = snapshot.value as? [String: Any] {
+                for (_,value) in newsDict {
+                    guard let innerDict = value as? [String: Any] else {
+                        continue
+                    }
+                    news.append(innerDict["news"] as! String)
+                }
 
+                self.delegete?.onNewsDataLoaded(news: news)
+            }
+        })
+        
+        
     }
     
     func signOut(){
@@ -290,6 +349,10 @@ protocol FirebaseActions {
     
     func userDataLoaded(user : User)
     func userDataNotLoaded(error: Error)
+    
+    func operationSuccessTemp()
+    
+    func onNewsDataLoaded(news : [String])
 }
 
 extension FirebaseActions {
@@ -301,4 +364,8 @@ extension FirebaseActions {
     
     func userDataLoaded(user : User){}
     func userDataNotLoaded(error: Error){}
+    
+    func operationSuccessTemp(){}
+    
+    func onNewsDataLoaded(news : [String]){}
 }

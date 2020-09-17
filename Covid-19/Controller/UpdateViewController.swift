@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class UpdateViewController: UIViewController {
 
@@ -21,6 +22,12 @@ class UpdateViewController: UIViewController {
     var indicatorHUD : IndicatorHUD!
     var validator = Validator()
     
+    let locationManager = CLLocationManager()
+
+    var lati: Double = 0
+    var long: Double = 0
+    var temp: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -33,14 +40,36 @@ class UpdateViewController: UIViewController {
             }
         }
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 200
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
         fireabaseManager.delegete = self
         indicatorHUD = IndicatorHUD(view: view)
+        
+        txtTemprature.text = String(format: "%.1f", slideTemprature.value)
        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         let gestureRecognizion = UITapGestureRecognizer(target: self, action: #selector(self.callSympthonsView))
         self.surveyView.addGestureRecognizer(gestureRecognizion)
         
+    }
+    
+    @IBAction func btnUpdatePressed(_ sender: UIButton) {
+        
+        if lati == 0 || long == 0{
+            if let location = locationManager.location {
+                lati = location.coordinate.latitude
+                long = location.coordinate.longitude
+            }
+        }
+        
+        indicatorHUD.show()
+        temp = String(format: "%.2f", slideTemprature.value)
+        fireabaseManager.saveTempData(temp: Double(temp)!, lat: lati, long: long, notify: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -161,4 +190,29 @@ extension UpdateViewController : FirebaseActions{
         
         indicatorHUD.hide()
     }
+    
+    func operationSuccessTemp() {
+        self.present(PopupDialog.generateAlert(title: "Success", msg: "Temperature data publish successfully!"), animated: true)
+        
+        indicatorHUD.hide()
+    }
 }
+
+extension UpdateViewController : CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            lati = location.coordinate.latitude
+            long = location.coordinate.longitude
+            temp = String(format: "%.2f", slideTemprature.value)
+            fireabaseManager.saveTempData(temp: Double(temp)!, lat: lati, long: long, notify: false)
+            
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        self.present(PopupDialog.generateAlert(title: "Location error", msg: error.localizedDescription), animated: false)
+    }
+
+}
+

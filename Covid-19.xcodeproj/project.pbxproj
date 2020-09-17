@@ -39,7 +39,6 @@
 		2685696B251379CB00447264 /* LunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685696A251379CB00447264 /* LunchScreenViewController.swift */; };
 		269761542511EDBC00ADE8A0 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */; };
 		269761562511FA2D00ADE8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 269761552511FA2D00ADE8A0 /* GoogleService-Info.plist */; };
-		26FF7786251254C600A1E85D /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF7785251254C600A1E85D /* News.swift */; };
 		26FF778825132A7A00A1E85D /* IndicatorHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF778725132A7A00A1E85D /* IndicatorHUD.swift */; };
 		26FF778A251336A100A1E85D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF7789251336A100A1E85D /* User.swift */; };
 		E5F2BBB5FD164F5C523876B3 /* Pods_Covid_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC4D45E6F415F46A46674B /* Pods_Covid_19.framework */; };
@@ -104,7 +103,6 @@
 		2685696A251379CB00447264 /* LunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchScreenViewController.swift; sourceTree = "<group>"; };
 		269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		269761552511FA2D00ADE8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		26FF7785251254C600A1E85D /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		26FF778725132A7A00A1E85D /* IndicatorHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorHUD.swift; sourceTree = "<group>"; };
 		26FF7789251336A100A1E85D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7D8458B867CEA85282BE8DD6 /* Pods-Covid-19-Covid-19UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19-Covid-19UITests.release.xcconfig"; path = "Target Support Files/Pods-Covid-19-Covid-19UITests/Pods-Covid-19-Covid-19UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 		26FF7784251254B800A1E85D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				26FF7785251254C600A1E85D /* News.swift */,
 				26FF7789251336A100A1E85D /* User.swift */,
 			);
 			path = Model;
@@ -563,7 +560,6 @@
 				2641054225107B6D00DD6383 /* HomeViewController.swift in Sources */,
 				26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */,
 				26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */,
-				26FF7786251254C600A1E85D /* News.swift in Sources */,
 				2685696B251379CB00447264 /* LunchScreenViewController.swift in Sources */,
 				26410532250F96DF00DD6383 /* RoundedTextField.swift in Sources */,
 				26640E322510B5D800DFCB11 /* PopupDialog.swift in Sources */,

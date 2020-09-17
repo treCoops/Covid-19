@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Firebase
+import CoreLocation
+import MapKit
 
 class HomeViewController: UIViewController {
     
@@ -18,10 +19,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var viewNews: UIView!
     @IBOutlet weak var viewMap: UIView!
     @IBOutlet weak var newsCollectionView: UICollectionView!
+    @IBOutlet weak var mapView: MKMapView!
     
-    var names = ["Anders is sick", "Kristian has head ack", "Sofia has stomack ack", "John cena is a super star", "Jenny Weasly is a harry potter star", "Lina", "Annie", "Katie", "Johanna"]
-//    var news : [News] = []
-    var news = [String]()
+    var news : [String] = []
+    
+    var fireabaseManager = FirebaseManager()
+    var indicatorHUD : IndicatorHUD!
+    var validator = Validator()
+    
+    let locationManager = CLLocationManager()
+    var lati: Double = 0
+    var long: Double = 0
     
     
     override func viewDidLoad() {
@@ -35,10 +43,20 @@ class HomeViewController: UIViewController {
         viewNews.roundView()
         viewMap.roundView()
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 5
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        
         registerNib()
         
-//        readNews()
+        fireabaseManager.delegete = self
+        indicatorHUD = IndicatorHUD(view: view)
         
+        fireabaseManager.getNewsData()
+        indicatorHUD.show()
+        mapView.showsUserLocation = true
     }
     
     func registerNib() {
@@ -49,34 +67,31 @@ class HomeViewController: UIViewController {
         }
     }
     
-    func readNews() {
-        let ref = Database.database().reference()
-        ref.child("Notifications").observe(DataEventType.value, with: { (snapshot) in
-          let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-            for key in postDict {
-//                print(key.value["message"] ?? "")
-                self.news.append(key.value["message"]! as! String)
-                print("Array \(self.news)")
-            }
-        })
+    @IBAction func btnRelocatePressed(_ sender: UIButton) {
+        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lati, longitude: long), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.mapView.setRegion(region, animated: true)
     }
+    
     
 }
 
 extension HomeViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return names.count
+        return news.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = newsCollectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.reuseIdentifier,
                                                              for: indexPath) as? NewsCell {
-            let name = names[indexPath.row]
-            cell.configureCell(name: name)
+            cell.configureCell(name: news[indexPath.row])
             return cell
         }
         return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.present( PopupDialog.generateAlert(title: "News", msg: news[indexPath.row]), animated: true)
     }
     
 }
@@ -90,13 +105,44 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
         
-        
-        
-        cell.configureCell(name: names[indexPath.row])
+        cell.configureCell(name: news[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         return CGSize(width: size.width, height: 150)
     }
     
+}
+
+extension HomeViewController : FirebaseActions{
+    func onNewsDataLoaded(news: [String]) {
+        self.news = news
+        
+        DispatchQueue.main.async {
+            self.newsCollectionView.reloadData()
+            self.indicatorHUD.hide()
+            self.newsCollectionView.layer.speed = 0.1
+            self.newsCollectionView.scrollToItem(at: IndexPath(item: news.count-1, section: 0), at: .right, animated: true)
+            
+        }
+    }
+    
+}
+
+extension HomeViewController : CLLocationManagerDelegate {
+
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.last {
+            lati = location.coordinate.latitude
+            long = location.coordinate.longitude
+            let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            self.mapView.setRegion(region, animated: true)
+            
+        }
+    }
+
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        self.present(PopupDialog.generateAlert(title: "Location error", msg: error.localizedDescription), animated: false)
+    }
+
 }
