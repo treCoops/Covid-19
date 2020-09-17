@@ -19,6 +19,8 @@ struct UserRelated {
     static var userNIC = "USER_NIC"
     static var userType = "USER_TYPE"
     static var userLogged = "USER_LOGGED"
+    static var userProfilePic = "USER_PROFILE_PICTURE"
+    static var userUID = "USER_UID"
 }
 
 struct UserRole {

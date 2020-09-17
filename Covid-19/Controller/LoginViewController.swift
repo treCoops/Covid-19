@@ -14,6 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var validator = Validator()
     var fireabaseManager = FirebaseManager()
+    var indicatorHUD : IndicatorHUD!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         txtPassword.delegate = self
         
         fireabaseManager.delegete = self
+        indicatorHUD = IndicatorHUD(view: view)
         
     }
     
@@ -55,17 +57,45 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
         
         fireabaseManager.signInUser(email: txtEmail.text ?? "", password: txtPassword.text ?? "")
+        indicatorHUD.show()
     }
     
 }
 
 extension LoginViewController : FirebaseActions{
+    
     func operationSuccess(uid: String?) {
         print("UID: \(uid ?? "")")
+        fireabaseManager.retrieveUserData(uid: uid)
     }
     
     func operationFailed(error: Error) {
         print("Error: \(error)")
+        self.present(PopupDialog.generateAlert(title: "SignIn Error", msg: error.localizedDescription), animated: true)
+        indicatorHUD.hide()
+        
     }
+    
+    func userDataLoaded(user: User) {
+        UserSession.saveUserData(user: user)
+        performSegue(withIdentifier: Seagus.loginToHome, sender: nil)
+        indicatorHUD.hide()
+    }
+    
+    func userDataNotLoaded(error: Error) {
+        print("Error: \(error)")
+        self.present(PopupDialog.generateAlert(title: "User Data Error", msg: error.localizedDescription), animated: true)
+        indicatorHUD.hide()
+    }
+    
+    func firebaseError(error: String) {
+        print("Error: \(error)")
+        indicatorHUD.hide()
+        self.present(PopupDialog.generateAlert(title: "User Data Error", msg: error), animated: true)
+    }
+    
 }
+
+
+
 

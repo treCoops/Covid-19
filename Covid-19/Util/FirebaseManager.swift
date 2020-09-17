@@ -58,7 +58,7 @@ class FirebaseManager{
     
     func saveUserInDB(data: Dictionary<String,String>){
         let dbRef = self.getDBReference()
-        dbRef.child("Users").child(data["role"] ?? "default").child(data["uid"] ?? "default").setValue(data) {
+        dbRef.child("Users").child(data["uid"] ?? "default").setValue(data) {
             (error: Error?, ref: DatabaseReference) in
             if let error = error {
                 self.delegete?.operationFailed(error: error)
@@ -75,9 +75,9 @@ class FirebaseManager{
             let metaData = StorageMetadata()
             metaData.contentType = "image/jpeg"
             
-            storageRef.child("userProfilePics").child(data["uid"] ?? "").putData(uploadImage, metadata: metaData) { (metadata, error) in
+            storageRef.child("userProfilePics").child(data["nic"] ?? "").putData(uploadImage, metadata: metaData) { (metadata, error) in
 
-              storageRef.child("userProfilePics").child(data["uid"] ?? "").downloadURL { (url, error) in
+              storageRef.child("userProfilePics").child(data["nic"] ?? "").downloadURL { (url, error) in
                     if let error = error {
                         self.delegete?.operationFailed(error: error)
                     }
@@ -104,6 +104,32 @@ class FirebaseManager{
         
     }
     
+    func retrieveUserData(uid: String?){
+        let dbRef = self.getDBReference()
+        
+        if let uid = uid{
+            dbRef.child("Users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
+                
+                if let user = snapshot.value as? [String : String]{
+                    self.delegete?.userDataLoaded(user:
+                        User(name: user["fullName"]!,
+                             email: user["emailAddress"]!,
+                             nic: user["nic"]!,
+                             role: user["role"]!,
+                             profilePicUrl: user["profileUrl"]!,
+                             uid: user["uid"]!))
+                }else{
+                    self.delegete?.firebaseError(error: "Data retrieve failed!")
+                }
+            
+              }) { (error) in
+                print("Error \(error.localizedDescription)")
+                self.delegete?.userDataNotLoaded(error: error)
+            }
+        }
+
+    }
+    
     
 }
 
@@ -111,10 +137,21 @@ protocol FirebaseActions {
     func operationSuccess(uid: String?)
     func operationFailed(error: Error)
     func operationSuccess()
+    
+    func firebaseError(error: String)
+    
+    func userDataLoaded(user : User)
+    func userDataNotLoaded(error: Error)
+   
 }
 
 extension FirebaseActions {
     func operationSuccess(uid: String?){}
     func operationFailed(error: Error){}
     func operationSuccess(){}
+    
+    func firebaseError(error: String){}
+    
+    func userDataLoaded(user : User){}
+    func userDataNotLoaded(error: Error){}
 }

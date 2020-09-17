@@ -125,7 +125,6 @@
                                 </state>
                                 <connections>
                                     <action selector="loginPressed:" destination="17v-fW-Xxi" eventType="touchUpInside" id="oVS-74-5Ee"/>
-                                    <segue destination="QRL-HF-78h" kind="show" id="hCf-2r-sk8"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="vU9-Ly-b6D">
@@ -178,6 +177,7 @@
                     <connections>
                         <outlet property="txtEmail" destination="7fb-kA-srl" id="eIz-4i-CI4"/>
                         <outlet property="txtPassword" destination="sR7-9I-osO" id="fj7-tA-tRg"/>
+                        <segue destination="QRL-HF-78h" kind="show" identifier="loginToHome" id="riM-TQ-Abg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IOA-eG-Zvy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -470,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1Dq-y5-vE1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1734" y="135"/>
+            <point key="canvasLocation" x="982" y="863"/>
         </scene>
         <!--Update-->
         <scene sceneID="q85-KZ-lSi">
@@ -1053,6 +1053,7 @@
         <scene sceneID="Qxu-hy-2sH">
             <objects>
                 <tabBarController id="QRL-HF-78h" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="NTD-Eo-DzS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="njm-5C-cBW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1067,7 +1068,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ED-n4-a20" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2554" y="130"/>
+            <point key="canvasLocation" x="1780" y="135"/>
         </scene>
         <!--Sympthons View Controller-->
         <scene sceneID="ANy-FV-qOR">

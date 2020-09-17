@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     var validator = Validator()
     var fireabaseManager = FirebaseManager()
-    var indicatorHUD = IndicatorHUD()
+    var indicatorHUD : IndicatorHUD!
     
     var imagePicker : ImagePicker!
     
@@ -47,6 +47,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         let gestureRecognizion = UITapGestureRecognizer(target: self, action: #selector(self.pickImage))
         self.imgProfilePic.addGestureRecognizer(gestureRecognizion)
+        
+        indicatorHUD = IndicatorHUD(view: view)
         
         
     }
@@ -139,7 +141,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         
         fireabaseManager.createUser(email: txtMail.text ?? "", password: txtPassword.text ?? "", name: txtName.text ?? "", nic: txtNIC.text ?? "", proPic: imgProfilePic.image, role: userRole)
-        indicatorHUD.show(view: view)
+        indicatorHUD.show()
         
     }
     
@@ -166,13 +168,13 @@ extension SignUpViewController : FirebaseActions{
     func operationSuccess() {
         self.present(PopupDialog.generateAlert(title: "Success", msg: "User Created Successfully.!"), animated: true)
         
-        indicatorHUD.hide(view: view)
+        indicatorHUD.hide()
     }
     
     func operationFailed(error: Error) {
         print(error)
         self.present(PopupDialog.generateAlert(title: "Error", msg: error.localizedDescription), animated: true)
         
-         indicatorHUD.hide(view: view)
+         indicatorHUD.hide()
     }
 }

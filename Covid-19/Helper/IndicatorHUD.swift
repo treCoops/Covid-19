@@ -12,19 +12,25 @@ class IndicatorHUD{
     
     let activityIndicator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
     
-    func show(view : UIView){
-        activityIndicator.backgroundColor = UIColor.systemGray4
+    var view : UIView
+    
+    init(view : UIView) {
+        self.view = view
         activityIndicator.layer.cornerRadius = 10
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.large
+    }
+    
+    func show(){
         
+        activityIndicator.backgroundColor = UIColor.systemGray4
         activityIndicator.startAnimating()
         view.addSubview(activityIndicator)
         view.isUserInteractionEnabled = false
     }
     
-    func hide(view : UIView){
+    func hide(){
         
         activityIndicator.stopAnimating()
         activityIndicator.removeFromSuperview()
