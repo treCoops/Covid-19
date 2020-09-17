@@ -17,6 +17,10 @@ class UpdateViewController: UIViewController {
     @IBOutlet weak var slideTemprature: UISlider!
     @IBOutlet weak var btnUpdate: UIButton!
     
+    var fireabaseManager = FirebaseManager()
+    var indicatorHUD : IndicatorHUD!
+    var validator = Validator()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +32,9 @@ class UpdateViewController: UIViewController {
                 AddFloatingButton()
             }
         }
+        
+        fireabaseManager.delegete = self
+        indicatorHUD = IndicatorHUD(view: view)
        
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
@@ -106,7 +113,34 @@ class UpdateViewController: UIViewController {
     
     @objc
     func onFloatingNewsButtonPressed(){
-        self.present(PopupDialog.generatePopupAlert(), animated: true)
+        
+        let alert = PopupDialog.generatePopupAlert(title: "Push News", message: "Enter your news", type: "NEWS")
+        
+        let action = UIAlertAction(title: "Push", style: .default, handler: {
+            action in
+            if let news = alert.textFields?.first {
+                self.indicatorHUD.show()
+                self.fireabaseManager.pushNews(news: news.text!)
+                
+            }
+        })
+        action.isEnabled = false;
+        alert.addAction(action)
+        
+        NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alert.textFields?.first, queue: OperationQueue.main, using: {
+            notification in
+            
+            if self.validator.isEmpty(alert.textFields?.first?.text ?? "") {
+                action.isEnabled = false
+                alert.message = "Enter a valid news!"
+            } else {
+                action.isEnabled = true
+                alert.message = "Click push to submit!"
+            }
+            
+        })
+        
+        self.present(alert, animated: true)
     }
     
     @objc
@@ -114,4 +148,17 @@ class UpdateViewController: UIViewController {
         self.performSegue(withIdentifier: Seagus.sympthonsSegue, sender: nil)
     }
   
+}
+
+extension UpdateViewController : FirebaseActions{
+    func operationFailed(error: Error) {
+        self.present(PopupDialog.generateAlert(title: "Error", msg: "News not published!"), animated: true)
+        indicatorHUD.hide()
+    }
+    
+    func operationSuccess() {
+        self.present(PopupDialog.generateAlert(title: "Success", msg: "News published successfully!"), animated: true)
+        
+        indicatorHUD.hide()
+    }
 }

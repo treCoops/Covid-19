@@ -9,21 +9,46 @@
 import UIKit
 
 class PopupDialog {
-    static func generatePopupAlert() -> UIAlertController {
-        let alert = UIAlertController(title: "Push News", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancl", style: .cancel, handler: nil))
+    static func generatePopupAlert(title: String, message: String, type: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
-        alert.addTextField(configurationHandler: {
-            txtNewsFiels in
-            txtNewsFiels.placeholder = "Type the news here."
-        })
+        if type == "NEWS"{
+            
+            alert.addTextField(configurationHandler: {
+                txtNewsFiels in
+                txtNewsFiels.placeholder = "Enter your news!"
+            })
+            
+        } else if type == "NAME"{
+            
+            alert.addTextField(configurationHandler: {
+                           txtNameFiels in
+                           txtNameFiels.placeholder = "Enter your name!"
+                       })
         
-        alert.addAction(UIAlertAction(title: "Push", style: .default, handler: {
-            btnPush in
-            if let news = alert.textFields?.first{
-                print(news)
-            }
-        }))
+        } else if type == "EMAIL" {
+            
+            alert.addTextField(configurationHandler: {
+                txtEmailFiels in
+                txtEmailFiels.placeholder = "Enter your email!"
+            })
+            
+        } else if type == "PASSWORD" {
+            
+            alert.addTextField(configurationHandler: {
+                txtPasswordFiels in
+                txtPasswordFiels.isSecureTextEntry = true
+                txtPasswordFiels.placeholder = "Enter your password!"
+            })
+            
+            alert.addTextField(configurationHandler: {
+                txtConfirmPasswordFiels in
+                txtConfirmPasswordFiels.isSecureTextEntry = true
+                txtConfirmPasswordFiels.placeholder = "Enter the confirm password!"
+            })
+            
+        }
         
         return alert
     }

@@ -104,6 +104,100 @@ class FirebaseManager{
         
     }
     
+    func changeProfilePic(image: UIImage){
+        if let uploadImage = image.jpegData(compressionQuality: 0.5){
+            let storageRef = self.getStorageReference()
+            let dbRef = self.getDBReference()
+            let metaData = StorageMetadata()
+            metaData.contentType = "image/jpeg"
+            
+            if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID), let nic: String = UserSession.getUserDefault(key: UserRelated.userNIC){
+            
+                storageRef.child("userProfilePics").child(nic).putData(uploadImage, metadata: metaData) { (metadata, error) in
+
+                  storageRef.child("userProfilePics").child(nic).downloadURL { (url, error) in
+                        if let error = error {
+                            self.delegete?.operationFailed(error: error)
+                        }
+                        guard let downloadURL = url else {
+                            return
+                        }
+                        
+                        UserSession.setUserDefault(data: downloadURL.absoluteString, key: UserRelated.userProfilePic)
+                        
+                        dbRef.child("Users").child(uid).child("profileUrl").setValue(downloadURL.absoluteString) {
+                            (error: Error?, ref: DatabaseReference) in
+                            if let error = error {
+                                self.delegete?.operationFailed(error: error)
+                            }else{
+                                self.delegete?.operationSuccess()
+                            }
+                        }
+
+                   
+                    }
+                }
+            }
+            
+        }
+    }
+    
+    func updateName(name: String){
+        
+        let dbRef = self.getDBReference()
+        
+        if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID){
+
+            dbRef.child("Users").child(uid).child("fullName").setValue(name) {
+                (error: Error?, ref: DatabaseReference) in
+                if let error = error {
+                    self.delegete?.operationFailed(error: error)
+                }else{
+                    UserSession.setUserDefault(data: name, key: UserRelated.userName)
+                    self.delegete?.operationSuccess()
+                }
+            }
+        
+        }
+    }
+    
+    func updateEmail(email: String){
+        let dbRef = self.getDBReference()
+        
+        if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID){
+            Auth.auth().currentUser?.updateEmail(to: email) { (error) in
+                if let error = error {
+                     self.delegete?.operationFailed(error: error)
+                }else{
+                    
+                    dbRef.child("Users").child(uid).child("emailAddress").setValue(email) {
+                        (error: Error?, ref: DatabaseReference) in
+                        if let error = error {
+                            self.delegete?.operationFailed(error: error)
+                        }else{
+                            UserSession.setUserDefault(data: email, key: UserRelated.userEmail)
+                            self.delegete?.operationSuccess()
+                        }
+                    }
+                    
+                }
+            }
+
+        }
+        
+    }
+    
+    func updatePassword(password: String){
+        Auth.auth().currentUser?.updatePassword(to: password) { (error) in
+            if let error = error {
+                self.delegete?.operationFailed(error: error)
+            }else{
+                self.delegete?.operationSuccess()
+            }
+        }
+
+    }
+    
     func retrieveUserData(uid: String?){
         let dbRef = self.getDBReference()
         
@@ -155,6 +249,20 @@ class FirebaseManager{
                 }
             }
         }
+    }
+    
+    func pushNews(news: String){
+        let dbRef = self.getDBReference()
+        guard let key = dbRef.child("Notifications").childByAutoId().key else { return }
+        dbRef.child("Notifications").child(key).child("news").setValue(news) {
+            (error: Error?, ref: DatabaseReference) in
+            if let error = error {
+                self.delegete?.operationFailed(error: error)
+            }else{
+                self.delegete?.operationSuccess()
+            }
+        }
+
     }
     
     func signOut(){

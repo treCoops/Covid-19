@@ -37,7 +37,7 @@ class HomeViewController: UIViewController {
         
         registerNib()
         
-        readNews()
+//        readNews()
         
     }
     
