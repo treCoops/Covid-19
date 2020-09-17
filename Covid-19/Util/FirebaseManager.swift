@@ -130,6 +130,33 @@ class FirebaseManager{
 
     }
     
+    func saveSympthonsData (score: Int){
+        
+        let dbRef = self.getDBReference()
+        if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID), let name: String = UserSession.getUserDefault(key: UserRelated.userName), let nic: String = UserSession.getUserDefault(key: UserRelated.userNIC), let role: String =  UserSession.getUserDefault(key: UserRelated.userType){
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let userRelatedData = [
+                "fullName": name,
+                "nic": nic,
+                "role": role,
+                "score": score,
+                "updatedDate": dateFormatter.string(from: Date())
+            ] as [String : Any]
+            
+            dbRef.child("UserRelatedData").child(uid).setValue(userRelatedData) {
+                (error: Error?, ref: DatabaseReference) in
+                if let error = error {
+                    self.delegete?.operationFailed(error: error)
+                }else{
+                    self.delegete?.operationSuccess()
+                }
+            }
+        }
+    }
+    
     
 }
 
@@ -142,7 +169,6 @@ protocol FirebaseActions {
     
     func userDataLoaded(user : User)
     func userDataNotLoaded(error: Error)
-   
 }
 
 extension FirebaseActions {

@@ -33,4 +33,9 @@ class PopupDialog {
         alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         return alert
     }
+    
+    static func generateAlertWithoutButton(title: String, msg: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        return alert
+    }
 }

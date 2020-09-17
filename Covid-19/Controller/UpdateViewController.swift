@@ -23,7 +23,12 @@ class UpdateViewController: UIViewController {
         tempView.roundView()
         surveyView.roundView()
         
-        AddFloatingButton()
+        if let role : String = UserSession.getUserDefault(key: UserRelated.userType){
+            if role == "STAFF"{
+                AddFloatingButton()
+            }
+        }
+       
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         let gestureRecognizion = UITapGestureRecognizer(target: self, action: #selector(self.callSympthonsView))

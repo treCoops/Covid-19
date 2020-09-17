@@ -1157,7 +1157,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mlp-3s-Lgf">
-                                                <rect key="frame" x="0.0" y="29" width="206" height="32"/>
+                                                <rect key="frame" x="0.0" y="28" width="206" height="32"/>
                                                 <color key="backgroundColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <segments>
                                                     <segment title="Low"/>
@@ -1186,6 +1186,9 @@
                                 <state key="normal" title="UPDATE">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnUpdatePressed:" destination="y2Y-Tz-fCn" eventType="touchUpInside" id="8pR-F5-KYR"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O8X-Ns-cWp">
                                 <rect key="frame" x="10" y="465" width="355" height="110"/>
@@ -1254,9 +1257,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="vGq-84-wG1"/>
                     <connections>
+                        <outlet property="coughSegment" destination="d9b-UE-ol3" id="2AT-eH-04L"/>
+                        <outlet property="feverSegment" destination="bNJ-3t-pGi" id="j9F-0q-9sU"/>
                         <outlet property="level1View" destination="Dz2-VF-1fF" id="aJq-2c-YSV"/>
                         <outlet property="level2View" destination="CGv-eK-gxu" id="HHv-WG-QcR"/>
                         <outlet property="level3View" destination="O8X-Ns-cWp" id="YMc-AC-XaV"/>
+                        <outlet property="troathSegment" destination="mlp-3s-Lgf" id="XPI-bL-iZr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eha-ZX-03d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

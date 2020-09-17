@@ -166,7 +166,17 @@ extension SignUpViewController : ImagePickerDelegate {
 
 extension SignUpViewController : FirebaseActions{
     func operationSuccess() {
-        self.present(PopupDialog.generateAlert(title: "Success", msg: "User Created Successfully.!"), animated: true)
+        let alert = PopupDialog.generateAlertWithoutButton(title: "Success", msg: "User Created Successfully.!")
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: {
+            action in
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        
+        
+        self.present(alert, animated: true)
+        
+        
         
         indicatorHUD.hide()
     }
