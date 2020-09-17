@@ -75,19 +75,28 @@ class FirebaseManager{
             let metaData = StorageMetadata()
             metaData.contentType = "image/jpeg"
             
-            storageRef.child("userProfilePics\(data["uid"] ?? "")").putData(uploadImage, metadata: metaData) { (metadata, error) in
+            storageRef.child("userProfilePics").child(data["uid"] ?? "").putData(uploadImage, metadata: metaData) { (metadata, error) in
 
-              storageRef.child("userProfilePics\(data["uid"] ?? "")").downloadURL { (url, error) in
-                if let error = error {
-                    self.delegete?.operationFailed(error: error)
-                }
-                guard let downloadURL = url else {
-                  return
-                }
-                
-                var User = data
-                User["profileUrl"] = downloadURL.absoluteString
-                self.saveUserInDB(data: User)
+              storageRef.child("userProfilePics").child(data["uid"] ?? "").downloadURL { (url, error) in
+                    if let error = error {
+                        self.delegete?.operationFailed(error: error)
+                    }
+                    guard let downloadURL = url else {
+                        
+                        let user = Auth.auth().currentUser
+
+                        user?.delete { error in
+                          if let error = error {
+                            print("User Delete Error \(error.localizedDescription)")
+                          }
+                        }
+
+                        return
+                    }
+                    
+                    var User = data
+                    User["profileUrl"] = downloadURL.absoluteString
+                    self.saveUserInDB(data: User)
                 }
             }
             

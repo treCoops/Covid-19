@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class HomeViewController: UIViewController {
     
@@ -19,6 +20,9 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var newsCollectionView: UICollectionView!
     
     var names = ["Anders is sick", "Kristian has head ack", "Sofia has stomack ack", "John cena is a super star", "Jenny Weasly is a harry potter star", "Lina", "Annie", "Katie", "Johanna"]
+//    var news : [News] = []
+    var news = [String]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,9 @@ class HomeViewController: UIViewController {
         viewMap.roundView()
         
         registerNib()
+        
+        readNews()
+        
     }
     
     func registerNib() {
@@ -40,7 +47,18 @@ class HomeViewController: UIViewController {
         if let flowLayout = self.newsCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
-        
+    }
+    
+    func readNews() {
+        let ref = Database.database().reference()
+        ref.child("Notifications").observe(DataEventType.value, with: { (snapshot) in
+          let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+            for key in postDict {
+//                print(key.value["message"] ?? "")
+                self.news.append(key.value["message"]! as! String)
+                print("Array \(self.news)")
+            }
+        })
     }
     
 }
@@ -68,11 +86,12 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-        guard let cell: NewsCell = Bundle.main.loadNibNamed(NewsCell.nibName,
-                                                            owner: self,
-                                                            options: nil)?.first as? NewsCell else {
-                                                                return CGSize.zero
+        guard let cell: NewsCell = Bundle.main.loadNibNamed(NewsCell.nibName, owner: self, options: nil)?.first as? NewsCell else {
+            return CGSize.zero
         }
+        
+        
+        
         cell.configureCell(name: names[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
