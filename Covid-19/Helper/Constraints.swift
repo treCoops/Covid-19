@@ -11,6 +11,8 @@ import Foundation
 struct Seagus {
     static var loginToHome = "loginToHome"
     static var sympthonsSegue = "sympthonsSegue"
+    static var splashToLogin = "splashToLogin"
+    static var splashToHome = "splashToHome"
 }
 
 struct UserRelated {

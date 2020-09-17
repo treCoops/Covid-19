@@ -39,9 +39,6 @@ class HomeViewController: UIViewController {
         
         readNews()
         
-        let user = UserSession.getUserData()
-        print(user)
-        
     }
     
     func registerNib() {

@@ -157,6 +157,19 @@ class FirebaseManager{
         }
     }
     
+    func signOut(){
+        
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            UserSession.clearUserData()
+
+        } catch let signOutError as NSError {
+            self.delegete?.operationFailed(error: signOutError)
+        }
+          
+    }
+    
     
 }
 

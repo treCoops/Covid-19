@@ -28,6 +28,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.view.endEditing(true)
         return true

@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         txtPassword.delegate = self
         txtConfirmPassword.delegate = self
         
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationController?.changeNavBarTintColor(tintColor: #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1))
         
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
@@ -175,8 +176,6 @@ extension SignUpViewController : FirebaseActions{
         
         
         self.present(alert, animated: true)
-        
-        
         
         indicatorHUD.hide()
     }

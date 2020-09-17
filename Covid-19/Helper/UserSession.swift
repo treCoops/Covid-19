@@ -48,7 +48,7 @@ class UserSession {
         UserDefaults.standard.removeObject(forKey: UserRelated.userProfilePic)
         UserDefaults.standard.removeObject(forKey: UserRelated.userNIC)
         UserDefaults.standard.removeObject(forKey: UserRelated.userType)
-        UserDefaults.standard.removeObject(forKey: UserRelated.userLogged)
+        UserDefaults.standard.set(false, forKey: UserRelated.userLogged)
         UserDefaults.standard.removeObject(forKey: UserRelated.userUID)
     }
     
