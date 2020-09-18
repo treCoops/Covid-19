@@ -22,6 +22,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     var news : [String] = []
+    var mapLocations : [MapLocations] = []
     
     var fireabaseManager = FirebaseManager()
     var indicatorHUD : IndicatorHUD!
@@ -30,6 +31,8 @@ class HomeViewController: UIViewController {
     let locationManager = CLLocationManager()
     var lati: Double = 0
     var long: Double = 0
+    
+    var mLocation : MapMarker!
     
     
     override func viewDidLoad() {
@@ -47,7 +50,11 @@ class HomeViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = 5
         locationManager.requestWhenInUseAuthorization()
-        locationManager.startUpdatingLocation()
+        
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
+        
         
         registerNib()
         
@@ -56,7 +63,13 @@ class HomeViewController: UIViewController {
         
         fireabaseManager.getNewsData()
         indicatorHUD.show()
+        
+        mapView.delegate = self
         mapView.showsUserLocation = true
+        
+        fireabaseManager.getLocationUpdates()
+        
+        mLocation = MapMarker(coordinate: CLLocationCoordinate2D(latitude: lati, longitude: long))
     }
     
     func registerNib() {
@@ -70,6 +83,26 @@ class HomeViewController: UIViewController {
     @IBAction func btnRelocatePressed(_ sender: UIButton) {
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: lati, longitude: long), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.mapView.setRegion(region, animated: true)
+    }
+    
+    func updateMapData(){
+        for data in mapLocations{
+            
+            if data.uid == UserSession.getUserDefault(key: UserRelated.userUID){
+                self.mapView.addAnnotation(mLocation)
+                continue
+            }
+            
+            let coordinate = CLLocationCoordinate2D(latitude: data.lat, longitude: data.long)
+            let pin = MapMarker(coordinate: coordinate)
+            if data.temp < 36 {
+                pin.title = "SAFE"
+            } else {
+                pin.title = "RISK"
+            }
+            
+            self.mapView.addAnnotation(pin)
+        }
     }
     
     
@@ -127,12 +160,26 @@ extension HomeViewController : FirebaseActions{
         }
     }
     
+    func onLocationDataLoaded(mapLocation: [MapLocations]) {
+        self.mapLocations.removeAll()
+        self.mapView.removeAnnotations(mapView.annotations)
+        self.mapLocations.append(contentsOf: mapLocation)
+        self.mapLocations = mapLocation
+        self.updateMapData()
+    }
+    
 }
 
 extension HomeViewController : CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
+            
+            mapView.removeAnnotation(mLocation)
+            mLocation = MapMarker(coordinate: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude))
+            mLocation.title = "I AM"
+            self.mapView.addAnnotation(mLocation)
+            
             lati = location.coordinate.latitude
             long = location.coordinate.longitude
             let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
@@ -145,4 +192,25 @@ extension HomeViewController : CLLocationManagerDelegate {
         self.present(PopupDialog.generateAlert(title: "Location error", msg: error.localizedDescription), animated: false)
     }
 
+}
+
+extension HomeViewController : MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let annotionView = MKAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        
+        if annotation.title == "RISK" {
+            annotionView.image = #imageLiteral(resourceName: "man_red")
+        }
+        
+        if annotation.title == "SAFE" {
+            annotionView.image = #imageLiteral(resourceName: "man_green")
+        }
+        
+        if annotation.title == "I AM" {
+            annotionView.image = #imageLiteral(resourceName: "man_me")
+        }
+        
+        annotionView.canShowCallout = true
+        return annotionView
+    }
 }

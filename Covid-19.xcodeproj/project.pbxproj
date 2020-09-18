@@ -37,6 +37,8 @@
 		26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E492511525C00DFCB11 /* NewsCell.swift */; };
 		26640E4C2511525C00DFCB11 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26640E4A2511525C00DFCB11 /* NewsCell.xib */; };
 		2685696B251379CB00447264 /* LunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685696A251379CB00447264 /* LunchScreenViewController.swift */; };
+		2685696F2514762400447264 /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685696E2514762400447264 /* MapLocation.swift */; };
+		268569712514A67D00447264 /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268569702514A67D00447264 /* MapMarker.swift */; };
 		269761542511EDBC00ADE8A0 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */; };
 		269761562511FA2D00ADE8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 269761552511FA2D00ADE8A0 /* GoogleService-Info.plist */; };
 		26FF778825132A7A00A1E85D /* IndicatorHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF778725132A7A00A1E85D /* IndicatorHUD.swift */; };
@@ -101,6 +103,8 @@
 		26640E492511525C00DFCB11 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		26640E4A2511525C00DFCB11 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		2685696A251379CB00447264 /* LunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchScreenViewController.swift; sourceTree = "<group>"; };
+		2685696E2514762400447264 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
+		268569702514A67D00447264 /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
 		269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		269761552511FA2D00ADE8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26FF778725132A7A00A1E85D /* IndicatorHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorHUD.swift; sourceTree = "<group>"; };
@@ -224,6 +228,7 @@
 				2641053B250FCBE700DD6383 /* KeyboardToolBar.swift */,
 				2641054825109F5300DD6383 /* RoundedView.swift */,
 				26640E372510D0AD00DFCB11 /* RoundedLabel.swift */,
+				268569702514A67D00447264 /* MapMarker.swift */,
 			);
 			path = UIClass;
 			sourceTree = "<group>";
@@ -285,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				26FF7789251336A100A1E85D /* User.swift */,
+				2685696E2514762400447264 /* MapLocation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -544,6 +550,7 @@
 				26FF778825132A7A00A1E85D /* IndicatorHUD.swift in Sources */,
 				26410505250F52FC00DD6383 /* LoginViewController.swift in Sources */,
 				2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */,
+				2685696F2514762400447264 /* MapLocation.swift in Sources */,
 				26640E382510D0AD00DFCB11 /* RoundedLabel.swift in Sources */,
 				26640E362510B99600DFCB11 /* Constraints.swift in Sources */,
 				26640E3A25111A9E00DFCB11 /* SympthonsViewController.swift in Sources */,
@@ -557,6 +564,7 @@
 				26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */,
 				26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */,
 				26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */,
+				268569712514A67D00447264 /* MapMarker.swift in Sources */,
 				2641054225107B6D00DD6383 /* HomeViewController.swift in Sources */,
 				26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */,
 				26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */,

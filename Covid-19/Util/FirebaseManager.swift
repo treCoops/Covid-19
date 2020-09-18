@@ -227,7 +227,7 @@ class FirebaseManager{
     func saveSympthonsData (score: Int){
         
         let dbRef = self.getDBReference()
-        if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID), let name: String = UserSession.getUserDefault(key: UserRelated.userName), let nic: String = UserSession.getUserDefault(key: UserRelated.userNIC), let role: String =  UserSession.getUserDefault(key: UserRelated.userType){
+        if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID), let name: String = UserSession.getUserDefault(key: UserRelated.userName), let nic: String = UserSession.getUserDefault(key: UserRelated.userNIC), let role: String =  UserSession.getUserDefault(key: UserRelated.userType), let profilePic: String = UserSession.getUserDefault(key: UserRelated.userProfilePic){
             
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -237,7 +237,8 @@ class FirebaseManager{
                 "nic": nic,
                 "role": role,
                 "score": score,
-                "updatedDate": dateFormatter.string(from: Date())
+                "updatedDate": dateFormatter.string(from: Date()),
+                "profilePicUrl": profilePic
             ] as [String : Any]
             
             dbRef.child("UserRelatedData").child(uid).setValue(userRelatedData) {
@@ -268,11 +269,15 @@ class FirebaseManager{
         let dbRef = self.getDBReference()
         if let uid: String = UserSession.getUserDefault(key: UserRelated.userUID){
             
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
             let userTempData = [
                 "uid": uid,
                 "temp": temp,
                 "lat": lat,
-                "long": long
+                "long": long,
+                "updatedDate": dateFormatter.string(from: Date())
                 ] as [String : Any]
             
             dbRef.child("UserTempData").child(uid).setValue(userTempData) {
@@ -324,6 +329,52 @@ class FirebaseManager{
         
     }
     
+    func getLocationUpdates(){
+        var mapLocation : [MapLocations] = []
+        let ref = self.getDBReference()
+        
+        ref.child("UserTempData").observe(.childChanged, with: {
+            snapshot in
+            
+            ref.child("UserTempData").observeSingleEvent(of: .value, with: { snapshot in
+                
+                mapLocation.removeAll()
+                
+                if let dict = snapshot.value as? [String: Any] {
+                    for loc in dict{
+                        guard let innerDict = loc.value as? [String: Any] else {
+                            continue
+                        }
+            
+                        mapLocation.append(MapLocations(temp: innerDict["temp"] as! Double, lat: innerDict["lat"] as! Double, long: innerDict["long"] as! Double, uid: innerDict["uid"] as! String, updatedDate: innerDict["updatedDate"] as! String))
+                    }
+                    
+                    self.delegete?.onLocationDataLoaded(mapLocation: mapLocation)
+                }
+                
+            })
+            
+        })
+        
+        ref.child("UserTempData").observeSingleEvent(of: .value, with: { snapshot in
+            
+            if let Dict = snapshot.value as? [String: Any] {
+                
+                for (_,value) in Dict {
+                    guard let innerDict = value as? [String: Any] else {
+                        continue
+                    }
+                
+                    mapLocation.append(MapLocations(temp: innerDict["temp"] as! Double, lat: innerDict["lat"] as! Double, long: innerDict["long"] as! Double, uid: innerDict["uid"] as! String, updatedDate: innerDict["updatedDate"] as! String))
+                    
+                }
+            
+
+                self.delegete?.onLocationDataLoaded(mapLocation: mapLocation)
+            }
+        })
+    }
+    
     func signOut(){
         
         let firebaseAuth = Auth.auth()
@@ -353,6 +404,7 @@ protocol FirebaseActions {
     func operationSuccessTemp()
     
     func onNewsDataLoaded(news : [String])
+    func onLocationDataLoaded(mapLocation: [MapLocations])
 }
 
 extension FirebaseActions {
@@ -368,4 +420,6 @@ extension FirebaseActions {
     func operationSuccessTemp(){}
     
     func onNewsDataLoaded(news : [String]){}
+    
+    func onLocationDataLoaded(mapLocation: [MapLocations]){}
 }
