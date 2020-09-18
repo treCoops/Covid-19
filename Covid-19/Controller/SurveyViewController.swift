@@ -23,12 +23,39 @@ class SurveyViewController: UIViewController {
         fireabaseManager.delegete = self
         indicatorHUD = IndicatorHUD(view: view)
         
-        tblViewSurvey.register(UINib(nibName: "SurveyTableViewCell", bundle: nil), forCellReuseIdentifier: "ReuseableCell")
+        tblViewSurvey.register(UINib(nibName: XIBIdentifier.XIB_SURVEY, bundle: nil), forCellReuseIdentifier: XIBIdentifier.XIB_SURVEY_CELL)
         
         fireabaseManager.getSurveyData()
         indicatorHUD.show()
     }
-
+    
+    @IBAction func filterChanged(_ sender: UISegmentedControl) {
+        
+    
+        if sender.selectedSegmentIndex == 1 {
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            for i in (0..<surveys.count){
+                surveys[i].dateValue = formatter.date(from: surveys[i].date)!
+            }
+            
+            surveys = surveys.sorted(by: {
+                $0.date.compare($1.date) == .orderedDescending
+            })
+            tblViewSurvey.reloadData()
+           
+        }else{
+            surveys = surveys.sorted(by: {
+                $0.score > $1.score
+            })
+            tblViewSurvey.reloadData()
+            
+        }
+ 
+    }
+    
 }
 
 
@@ -39,7 +66,7 @@ extension SurveyViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = tblViewSurvey.dequeueReusableCell(withIdentifier: "ReuseableCell", for: indexPath) as! SurveyTableViewCell
+        let row = tblViewSurvey.dequeueReusableCell(withIdentifier: XIBIdentifier.XIB_SURVEY_CELL, for: indexPath) as! SurveyTableViewCell
         row.configXIB(data: surveys[indexPath.row])
         
         return row
@@ -53,6 +80,10 @@ extension SurveyViewController : FirebaseActions{
         print(survey)
         surveys.removeAll()
         surveys.append(contentsOf: survey)
+        surveys = surveys.sorted(by: {
+            $0.score > $1.score
+        })
+        
         tblViewSurvey.reloadData()
         indicatorHUD.hide()
     }

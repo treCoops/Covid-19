@@ -841,9 +841,12 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="aSj-aV-RVq">
                                 <rect key="frame" x="10" y="220" width="355" height="32"/>
                                 <segments>
-                                    <segment title="By Date"/>
                                     <segment title="By Score"/>
+                                    <segment title="By Date"/>
                                 </segments>
+                                <connections>
+                                    <action selector="filterChanged:" destination="kCN-Gu-A2J" eventType="valueChanged" id="c5m-TW-vKn"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iv8-wq-ggt">
                                 <rect key="frame" x="0.0" y="259" width="375" height="408"/>

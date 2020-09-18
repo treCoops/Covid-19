@@ -389,7 +389,7 @@ class FirebaseManager{
                         continue
                     }
                 
-                    surveys.append(Survey(nic: innerDict["nic"] as! String, profilePicUirl: innerDict["profilePicUrl"] as! String, role: innerDict["role"] as! String, name: innerDict["fullName"] as! String, score: innerDict["score"] as! Int, date: innerDict["updatedDate"] as! String))
+                    surveys.append(Survey(nic: innerDict["nic"] as! String, profilePicUirl: innerDict["profilePicUrl"] as! String, role: innerDict["role"] as! String, name: innerDict["fullName"] as! String, score: innerDict["score"] as! Int, date: innerDict["updatedDate"] as! String, dateValue: nil))
                     
                 }
             
