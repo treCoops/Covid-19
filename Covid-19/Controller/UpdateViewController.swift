@@ -82,7 +82,7 @@ class UpdateViewController: UIViewController {
         if sender.value < 25{
             
             UIView.animate(withDuration: 0.7, animations: {
-                self.slideTemprature.tintColor = #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1)
+                self.slideTemprature.tintColor = #colorLiteral(red: 0, green: 0.7647058824, blue: 0.4, alpha: 1)
                 self.txtTemprature.textColor = #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1)
                 self.txtC.textColor = #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1)
                 self.btnUpdate.backgroundColor = #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1)
@@ -111,7 +111,7 @@ class UpdateViewController: UIViewController {
             UIView.animate(withDuration: 0.7, animations: {
                 self.slideTemprature.tintColor = #colorLiteral(red: 1, green: 0.110739512, blue: 0.03352418664, alpha: 1)
                 self.txtTemprature.textColor = #colorLiteral(red: 1, green: 0.110739512, blue: 0.03352418664, alpha: 1)
-                self.txtC.textColor = #colorLiteral(red: 1, green: 0.110739512, blue: 0.03352418664, alpha: 1)
+                self.txtC.textColor = #colorLiteral(red: 1, green: 0.1098039216, blue: 0.03529411765, alpha: 1)
                 self.btnUpdate.backgroundColor = #colorLiteral(red: 1, green: 0.110739512, blue: 0.03352418664, alpha: 1)
             })
             

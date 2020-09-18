@@ -375,6 +375,33 @@ class FirebaseManager{
         })
     }
     
+    func getSurveyData(){
+        var surveys: [Survey] = []
+        let ref = self.getDBReference()
+        
+        
+        ref.child("UserRelatedData").observeSingleEvent(of: .value, with: { snapshot in
+            
+            if let Dict = snapshot.value as? [String: Any] {
+                
+                for (_,value) in Dict {
+                    guard let innerDict = value as? [String: Any] else {
+                        continue
+                    }
+                
+                    surveys.append(Survey(nic: innerDict["nic"] as! String, profilePicUirl: innerDict["profilePicUrl"] as! String, role: innerDict["role"] as! String, name: innerDict["fullName"] as! String, score: innerDict["score"] as! Int, date: innerDict["updatedDate"] as! String))
+                    
+                }
+            
+
+                self.delegete?.onServeyDataLoaded(survey: surveys)
+            }
+        }) { (error) in
+            self.delegete?.operationFailed(error: error)
+        }
+        
+    }
+    
     func signOut(){
         
         let firebaseAuth = Auth.auth()
@@ -405,6 +432,7 @@ protocol FirebaseActions {
     
     func onNewsDataLoaded(news : [String])
     func onLocationDataLoaded(mapLocation: [MapLocations])
+    func onServeyDataLoaded(survey: [Survey])
 }
 
 extension FirebaseActions {
@@ -422,4 +450,5 @@ extension FirebaseActions {
     func onNewsDataLoaded(news : [String]){}
     
     func onLocationDataLoaded(mapLocation: [MapLocations]){}
+    func onServeyDataLoaded(survey: [Survey]){}
 }

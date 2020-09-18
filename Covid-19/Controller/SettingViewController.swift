@@ -16,6 +16,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var txtName: UILabel!
     @IBOutlet weak var txtEmail: UILabel!
     @IBOutlet weak var txtRole: UILabel!
+    @IBOutlet weak var btnViewSurveyResult: UIButton!
     
     var imagePicker : ImagePicker!
     var fireabaseManager = FirebaseManager()
@@ -24,6 +25,13 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let role : String = UserSession.getUserDefault(key: UserRelated.userType){
+            if role == "STUDENT"{
+                btnViewSurveyResult.isEnabled = false
+                btnViewSurveyResult.setTitleColor(UIColor.init(cgColor: #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)), for: .normal)
+            }
+        }
         
         if let imageURL : String = UserSession.getUserDefault(key: UserRelated.userProfilePic){
             let url = URL(string: imageURL)
@@ -56,6 +64,8 @@ class SettingViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        
         if let imageURL : String = UserSession.getUserDefault(key: UserRelated.userProfilePic){
             let url = URL(string: imageURL)
             imgProfilePic.kf.setImage(with: url)
@@ -191,10 +201,6 @@ class SettingViewController: UIViewController {
         })
 
         self.present(alert, animated: true)
-    }
-    
-    @IBAction func btnViewResultPressed(_ sender: UIButton) {
-        
     }
     
     @IBAction func btnLogoutPressed(_ sender: UIButton) {

@@ -29,3 +29,10 @@ struct UserRole {
     static var USER_TYPE_STUDENT = "STUDENT"
     static var USER_TYPE_STAFF = "STAFF"
 }
+
+struct XIBIdentifier {
+    static var XIB_SURVEY_CELL = "ReuseableCell"
+    static var XIB_SURVEY = "SurveyTableViewCell"
+    
+    static var XIB_NEWS_CELL = "newsCellReuseable"
+}
