@@ -30,6 +30,7 @@ class HomeViewController: UIViewController {
     
     var fireabaseManager = FirebaseManager()
     var indicatorHUD : IndicatorHUD!
+    var validator = Validator()
     
     let locationManager = CLLocationManager()
     var lati: Double = 0
@@ -63,6 +64,7 @@ class HomeViewController: UIViewController {
         
         
         registerNib()
+        addFloatingButton()
         
         fireabaseManager.delegete = self
         indicatorHUD = IndicatorHUD(view: view)
@@ -123,6 +125,56 @@ class HomeViewController: UIViewController {
         txtInfected.text = String(self.infected)
         txtTotal.text = String(self.safe + self.infected)
     }
+    
+    func addFloatingButton(){
+        let button = UIButton(type: .custom) // let preferred over var here
+        button.frame = CGRect(x: 100, y: 100, width: 100, height: 50)
+        button.setImage(#imageLiteral(resourceName: "help"), for: .normal)
+        
+        button.addTarget(self, action: #selector(onFloatingHelpButtonPressed), for: .touchUpInside)
+        self.view.addSubview(button)
+        
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+          let widthContraints =  NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.width, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 40)
+          
+          let heightContraints = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: 40)
+          
+          let xContraints = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.bottomMargin, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.bottomMargin, multiplier: 1, constant: -20)
+          
+          let yContraints = NSLayoutConstraint(item: button, attribute: NSLayoutConstraint.Attribute.trailing, relatedBy: NSLayoutConstraint.Relation.equal, toItem: view, attribute: NSLayoutConstraint.Attribute.trailing, multiplier: 1, constant: -20)
+          
+          NSLayoutConstraint.activate([heightContraints,widthContraints,xContraints,yContraints])
+    }
+    
+    @objc
+    func onFloatingHelpButtonPressed(){
+        
+        let alert = PopupDialog.generatePopupAlert(title: "Ask for help", message: "", type: "Help")
+        
+        let action = UIAlertAction(title: "Call", style: .default, handler: {
+            action in
+            
+            if let phoneCallURL = URL(string: "telprompt://\(0111111117)") {
+
+                let application:UIApplication = UIApplication.shared
+                if (application.canOpenURL(phoneCallURL)) {
+                    if #available(iOS 10.0, *) {
+                        application.open(phoneCallURL, options: [:], completionHandler: nil)
+                    } else {
+                         application.openURL(phoneCallURL as URL)
+
+                    }
+                }
+            }
+            
+        })
+        
+        alert.addAction(action)
+        
+        self.present(alert, animated: true)
+    }
+    
     
     
 }
@@ -241,3 +293,5 @@ extension HomeViewController : MKMapViewDelegate{
         return annotionView
     }
 }
+
+
