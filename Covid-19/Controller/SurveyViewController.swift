@@ -101,5 +101,11 @@ extension SurveyViewController : FirebaseActions{
         self.present(PopupDialog.generateAlert(title: "Error", msg: error.localizedDescription), animated: true)
         indicatorHUD.hide()
     }
+    
+    func onSurveyDataLoadEmpty(error: String) {
+        print(error)
+        self.present(PopupDialog.generateAlert(title: "Alert", msg: error), animated: true)
+        indicatorHUD.hide()
+    }
 
 }

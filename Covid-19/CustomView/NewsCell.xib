@@ -25,11 +25,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qyW-Ed-Ykc">
+                                <rect key="frame" x="30" y="114" width="216" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="LP2-fg-ZcF" secondAttribute="trailing" constant="20" id="Dc1-q0-GrP"/>
+                            <constraint firstItem="qyW-Ed-Ykc" firstAttribute="leading" secondItem="zCv-11-fjW" secondAttribute="leading" constant="30" id="DrJ-Rn-sWT"/>
+                            <constraint firstAttribute="trailing" secondItem="qyW-Ed-Ykc" secondAttribute="trailing" constant="30" id="Dsx-T0-3Vv"/>
                             <constraint firstItem="LP2-fg-ZcF" firstAttribute="top" secondItem="zCv-11-fjW" secondAttribute="top" constant="30" id="L6Z-ri-jcf"/>
+                            <constraint firstAttribute="bottom" secondItem="qyW-Ed-Ykc" secondAttribute="bottom" constant="20" id="Qm8-Bj-cTP"/>
                             <constraint firstItem="LP2-fg-ZcF" firstAttribute="leading" secondItem="zCv-11-fjW" secondAttribute="leading" constant="20" id="dow-GA-rbf"/>
                             <constraint firstAttribute="width" constant="276" id="ibv-bg-cEq"/>
                             <constraint firstAttribute="height" constant="150" id="wth-2L-ZmI"/>
@@ -48,6 +57,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="276" height="150"/>
             <connections>
+                <outlet property="txtName" destination="qyW-Ed-Ykc" id="f3O-sz-1VE"/>
                 <outlet property="txtNews" destination="LP2-fg-ZcF" id="bzs-ji-PSX"/>
                 <outlet property="view" destination="zCv-11-fjW" id="4UI-iI-D5K"/>
             </connections>

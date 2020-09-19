@@ -149,7 +149,7 @@ class UpdateViewController: UIViewController {
             action in
             if let news = alert.textFields?.first {
                 self.indicatorHUD.show()
-                self.fireabaseManager.pushNews(news: news.text!)
+                self.fireabaseManager.pushNews(news: news.text!, name: UserSession.getUserDefault(key: UserRelated.userName)!)
                 
             }
         })

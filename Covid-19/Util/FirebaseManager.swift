@@ -252,10 +252,16 @@ class FirebaseManager{
         }
     }
     
-    func pushNews(news: String){
+    func pushNews(news: String, name: String){
         let dbRef = self.getDBReference()
+        
+        let newsData = [
+            "news" : news,
+            "name" : name
+        ] as [String : String]
+        
         guard let key = dbRef.child("Notifications").childByAutoId().key else { return }
-        dbRef.child("Notifications").child(key).child("news").setValue(news) {
+        dbRef.child("Notifications").child(key).setValue(newsData) {
             (error: Error?, ref: DatabaseReference) in
             if let error = error {
                 self.delegete?.operationFailed(error: error)
@@ -294,16 +300,22 @@ class FirebaseManager{
     }
     
     func getNewsData(){
-        var news : [String] = []
+        var news : [News] = []
         let ref = self.getDBReference()
         var initialRead = true
         
         ref.child("Notifications").observe(.childAdded, with: {
             snapshot in
+        
             if initialRead == false {
                 if let newsDict = snapshot.value as? [String : Any] {
-                    let data = newsDict["news"] as! String
-                    news.append(data)
+                    
+                    guard snapshot.exists() else{
+                        self.delegete?.onNewsDataLoadEmpty(error: "No news data available!")
+                        return
+                    }
+                    
+                    news.append(News(news: newsDict["news"] as! String, name: newsDict["name"] as! String))
                     self.delegete?.onNewsDataLoaded(news: news)
                 }
             }
@@ -314,12 +326,17 @@ class FirebaseManager{
             
             initialRead = false
             
+            guard snapshot.exists() else{
+                self.delegete?.onNewsDataLoadEmpty(error: "No news for you!")
+                return
+            }
+            
             if let newsDict = snapshot.value as? [String: Any] {
                 for (_,value) in newsDict {
                     guard let innerDict = value as? [String: Any] else {
                         continue
                     }
-                    news.append(innerDict["news"] as! String)
+                    news.append(News(news: innerDict["news"] as! String, name: innerDict["name"] as! String))
                 }
 
                 self.delegete?.onNewsDataLoaded(news: news)
@@ -382,6 +399,11 @@ class FirebaseManager{
         
         ref.child("UserRelatedData").observeSingleEvent(of: .value, with: { snapshot in
             
+            guard snapshot.exists() else{
+                self.delegete?.onSurveyDataLoadEmpty(error: "No survey results available!")
+                return
+            }
+            
             if let Dict = snapshot.value as? [String: Any] {
                 
                 for (_,value) in Dict {
@@ -431,10 +453,13 @@ protocol FirebaseActions {
     
     func operationSuccessTemp()
     
-    func onNewsDataLoaded(news : [String])
+    func onNewsDataLoaded(news : [News])
     
     func onLocationDataLoaded(mapLocation: [MapLocations])
     func onServeyDataLoaded(survey: [Survey])
+    
+    func onNewsDataLoadEmpty(error: String)
+    func onSurveyDataLoadEmpty(error: String)
 }
 
 extension FirebaseActions {
@@ -450,8 +475,11 @@ extension FirebaseActions {
     
     func operationSuccessTemp(){}
     
-    func onNewsDataLoaded(news : [String]){}
+    func onNewsDataLoaded(news : [News]){}
     
     func onLocationDataLoaded(mapLocation: [MapLocations]){}
     func onServeyDataLoaded(survey: [Survey]){}
+    
+    func onNewsDataLoadEmpty(error: String){}
+    func onSurveyDataLoadEmpty(error: String){}
 }

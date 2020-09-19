@@ -36,6 +36,8 @@
 		26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */; };
 		26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26640E492511525C00DFCB11 /* NewsCell.swift */; };
 		26640E4C2511525C00DFCB11 /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26640E4A2511525C00DFCB11 /* NewsCell.xib */; };
+		2682EC4A2516046200F29365 /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682EC492516046200F29365 /* News.swift */; };
+		2682EC4C251622E000F29365 /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2682EC4B251622E000F29365 /* ContactUsViewController.swift */; };
 		2685696B251379CB00447264 /* LunchScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685696A251379CB00447264 /* LunchScreenViewController.swift */; };
 		2685696F2514762400447264 /* MapLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685696E2514762400447264 /* MapLocation.swift */; };
 		268569712514A67D00447264 /* MapMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268569702514A67D00447264 /* MapMarker.swift */; };
@@ -107,6 +109,8 @@
 		26640E3D251123F300DFCB11 /* ChangeNavBarTintColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeNavBarTintColor.swift; sourceTree = "<group>"; };
 		26640E492511525C00DFCB11 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		26640E4A2511525C00DFCB11 /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
+		2682EC492516046200F29365 /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		2682EC4B251622E000F29365 /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		2685696A251379CB00447264 /* LunchScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LunchScreenViewController.swift; sourceTree = "<group>"; };
 		2685696E2514762400447264 /* MapLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapLocation.swift; sourceTree = "<group>"; };
 		268569702514A67D00447264 /* MapMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapMarker.swift; sourceTree = "<group>"; };
@@ -269,6 +273,7 @@
 				268569722514BA1D00447264 /* MapViewController.swift */,
 				268569742514C7B000447264 /* SurveyViewController.swift */,
 				268569762514CD3600447264 /* SurveyTableViewCell.swift */,
+				2682EC4B251622E000F29365 /* ContactUsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				26FF7789251336A100A1E85D /* User.swift */,
 				2685696E2514762400447264 /* MapLocation.swift */,
 				2685697A2514D7C400447264 /* Survey.swift */,
+				2682EC492516046200F29365 /* News.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -566,8 +572,10 @@
 				26FF778825132A7A00A1E85D /* IndicatorHUD.swift in Sources */,
 				26410505250F52FC00DD6383 /* LoginViewController.swift in Sources */,
 				2641053A250FC73300DD6383 /* HideNavigationBar.swift in Sources */,
+				2682EC4C251622E000F29365 /* ContactUsViewController.swift in Sources */,
 				268569752514C7B000447264 /* SurveyViewController.swift in Sources */,
 				2685696F2514762400447264 /* MapLocation.swift in Sources */,
+				2682EC4A2516046200F29365 /* News.swift in Sources */,
 				26640E382510D0AD00DFCB11 /* RoundedLabel.swift in Sources */,
 				26640E362510B99600DFCB11 /* Constraints.swift in Sources */,
 				26640E3A25111A9E00DFCB11 /* SympthonsViewController.swift in Sources */,

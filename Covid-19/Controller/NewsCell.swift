@@ -12,6 +12,7 @@ class NewsCell: UICollectionViewCell {
 
     @IBOutlet weak var txtNews: UILabel!
     @IBOutlet weak var view: UIView!
+    @IBOutlet weak var txtName: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,8 +26,9 @@ class NewsCell: UICollectionViewCell {
         return "NewsCell"
     }
     
-    func configureCell(name: String) {
-        self.txtNews.text = name
+    func configureCell(news: News) {
+        self.txtNews.text = news.news
+        self.txtName.text = "(\(news.name))"
     }
 
 }

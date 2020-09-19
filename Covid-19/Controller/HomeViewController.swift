@@ -25,7 +25,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var txtSafe: UILabel!
     @IBOutlet weak var txtTotal: UILabel!
     
-    var news : [String] = []
+    var news : [News] = []
     var mapLocations : [MapLocations] = []
     
     var fireabaseManager = FirebaseManager()
@@ -136,15 +136,16 @@ extension HomeViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = newsCollectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.reuseIdentifier,
                                                              for: indexPath) as? NewsCell {
-            cell.configureCell(name: news[indexPath.row])
+            cell.configureCell(news: news[indexPath.row])
             
             return cell
         }
         return UICollectionViewCell()
     }
     
+    //re think
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.present( PopupDialog.generateAlert(title: "News", msg: news[indexPath.row]), animated: true)
+        self.present( PopupDialog.generateAlert(title: "News", msg: news[indexPath.row].news), animated: true)
     }
     
 }
@@ -158,7 +159,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
         
-        cell.configureCell(name: news[indexPath.row])
+        cell.configureCell(news: news[indexPath.row])
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
         let size: CGSize = cell.contentView.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
@@ -168,7 +169,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
 }
 
 extension HomeViewController : FirebaseActions{
-    func onNewsDataLoaded(news: [String]) {
+    func onNewsDataLoaded(news: [News]) {
         self.news = news
         
         DispatchQueue.main.async {
@@ -186,6 +187,12 @@ extension HomeViewController : FirebaseActions{
         self.mapLocations.append(contentsOf: mapLocation)
         self.mapLocations = mapLocation
         self.updateMapData()
+    }
+    
+    func onNewsDataLoadEmpty(error: String){
+        print(error)
+        self.present(PopupDialog.generateAlert(title: "Alert", msg: error), animated: true)
+        indicatorHUD.hide()
     }
     
 }
