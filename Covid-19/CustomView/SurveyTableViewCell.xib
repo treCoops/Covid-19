@@ -29,7 +29,7 @@
                                 <rect key="frame" x="100" y="11" width="2" height="80"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="Xqb-jO-fuZ"/>
+                                    <constraint firstAttribute="height" constant="80" id="TRY-7X-6qy"/>
                                     <constraint firstAttribute="width" constant="2" id="s6Z-si-l1C"/>
                                 </constraints>
                             </view>

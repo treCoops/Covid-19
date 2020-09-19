@@ -419,6 +419,7 @@ class FirebaseManager{
 }
 
 protocol FirebaseActions {
+    
     func operationSuccess(uid: String?)
     func operationFailed(error: Error)
     func operationSuccess()
@@ -431,11 +432,13 @@ protocol FirebaseActions {
     func operationSuccessTemp()
     
     func onNewsDataLoaded(news : [String])
+    
     func onLocationDataLoaded(mapLocation: [MapLocations])
     func onServeyDataLoaded(survey: [Survey])
 }
 
 extension FirebaseActions {
+    
     func operationSuccess(uid: String?){}
     func operationFailed(error: Error){}
     func operationSuccess(){}

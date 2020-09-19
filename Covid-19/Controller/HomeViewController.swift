@@ -137,6 +137,7 @@ extension HomeViewController : UICollectionViewDataSource {
         if let cell = newsCollectionView.dequeueReusableCell(withReuseIdentifier: NewsCell.reuseIdentifier,
                                                              for: indexPath) as? NewsCell {
             cell.configureCell(name: news[indexPath.row])
+            
             return cell
         }
         return UICollectionViewCell()

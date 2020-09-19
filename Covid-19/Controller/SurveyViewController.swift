@@ -18,7 +18,7 @@ class SurveyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        self.navigationController?.changeNavBarTintColor(tintColor: #colorLiteral(red: 0, green: 0.762951076, blue: 0.4009746909, alpha: 1))
+        self.navigationController?.changeNavBarTintColor(tintColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
         
         fireabaseManager.delegete = self
         indicatorHUD = IndicatorHUD(view: view)
@@ -27,6 +27,10 @@ class SurveyViewController: UIViewController {
         
         fireabaseManager.getSurveyData()
         indicatorHUD.show()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.hideNavigationBar()
     }
     
     @IBAction func filterChanged(_ sender: UISegmentedControl) {
@@ -66,10 +70,15 @@ extension SurveyViewController: UITableViewDelegate, UITableViewDataSource{
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let row = tblViewSurvey.dequeueReusableCell(withIdentifier: XIBIdentifier.XIB_SURVEY_CELL, for: indexPath) as! SurveyTableViewCell
-        row.configXIB(data: surveys[indexPath.row])
+        let cell = tblViewSurvey.dequeueReusableCell(withIdentifier: XIBIdentifier.XIB_SURVEY_CELL, for: indexPath) as! SurveyTableViewCell
+        cell.configXIB(data: surveys[indexPath.row])
         
-        return row
+        cell.alpha = 0
+        UIView.animate(withDuration: 0.5, delay: 0.05 * Double(indexPath.row), animations: {
+            cell.alpha = 1
+        })
+        
+        return cell
     }
 
 
@@ -89,6 +98,7 @@ extension SurveyViewController : FirebaseActions{
     }
 
     func operationFailed(error: Error) {
+        self.present(PopupDialog.generateAlert(title: "Error", msg: error.localizedDescription), animated: true)
         indicatorHUD.hide()
     }
 
