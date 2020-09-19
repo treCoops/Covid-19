@@ -947,43 +947,51 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="117" translatesAutoresizingMaskIntoConstraints="NO" id="EC5-a4-m5S">
-                                        <rect key="frame" x="69" y="224.5" width="217" height="50"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="EC5-a4-m5S">
+                                        <rect key="frame" x="102.5" y="224.5" width="150" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zyp-Cj-Gfg">
                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="Mvt-RO-DYY"/>
                                                     <constraint firstAttribute="height" constant="50" id="edX-iz-KoE"/>
-                                                    <constraint firstAttribute="width" constant="50" id="o3G-pp-dFk"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="phone-call"/>
+                                                <state key="normal" image="phone-call"/>
                                                 <connections>
                                                     <action selector="btnCallPressed:" destination="EOU-l3-eKI" eventType="touchUpInside" id="VWb-6a-yEw"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMV-dR-uq3">
-                                                <rect key="frame" x="167" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="100" y="0.0" width="50" height="50"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="KbT-Xh-BHK"/>
                                                     <constraint firstAttribute="height" constant="50" id="bkb-mY-hL6"/>
+                                                    <constraint firstAttribute="width" constant="50" id="ljq-Hs-3fb"/>
                                                 </constraints>
-                                                <state key="normal" title="Button" image="mail"/>
+                                                <state key="normal" image="mail"/>
                                                 <connections>
                                                     <action selector="btnSendSmsPressed:" destination="EOU-l3-eKI" eventType="touchUpInside" id="EUQ-e0-3CQ"/>
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="RMV-dR-uq3" firstAttribute="top" secondItem="EC5-a4-m5S" secondAttribute="top" id="5yZ-3M-Cvt"/>
+                                            <constraint firstAttribute="bottom" secondItem="zyp-Cj-Gfg" secondAttribute="bottom" id="6qp-GD-Wna"/>
+                                            <constraint firstItem="zyp-Cj-Gfg" firstAttribute="leading" secondItem="EC5-a4-m5S" secondAttribute="leading" id="A1x-9H-vmQ"/>
+                                            <constraint firstItem="zyp-Cj-Gfg" firstAttribute="top" secondItem="EC5-a4-m5S" secondAttribute="top" id="Xau-ug-gVh"/>
+                                            <constraint firstAttribute="bottom" secondItem="RMV-dR-uq3" secondAttribute="bottom" id="sdr-I1-Dnh"/>
+                                            <constraint firstAttribute="trailing" secondItem="RMV-dR-uq3" secondAttribute="trailing" id="xVg-f8-6C2"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="EC5-a4-m5S" firstAttribute="centerX" secondItem="g2z-bq-rmS" secondAttribute="centerX" id="9GL-uz-WLA"/>
                                     <constraint firstItem="9nT-fQ-UNB" firstAttribute="centerX" secondItem="g2z-bq-rmS" secondAttribute="centerX" id="9LF-tX-LMy"/>
                                     <constraint firstItem="FNo-5r-SGc" firstAttribute="top" secondItem="9nT-fQ-UNB" secondAttribute="bottom" constant="5" id="Ay6-Dy-GX0"/>
                                     <constraint firstItem="woB-80-qDA" firstAttribute="centerX" secondItem="g2z-bq-rmS" secondAttribute="centerX" id="E3A-56-gCt"/>
                                     <constraint firstItem="eLd-Sd-Wxs" firstAttribute="top" secondItem="woB-80-qDA" secondAttribute="bottom" constant="5" id="GGA-a7-51u"/>
                                     <constraint firstItem="9nT-fQ-UNB" firstAttribute="top" secondItem="eLd-Sd-Wxs" secondAttribute="bottom" constant="24.5" id="I0F-vX-x07"/>
                                     <constraint firstItem="woB-80-qDA" firstAttribute="top" secondItem="g2z-bq-rmS" secondAttribute="top" constant="75" id="V6E-q3-hV8"/>
-                                    <constraint firstItem="EC5-a4-m5S" firstAttribute="centerX" secondItem="g2z-bq-rmS" secondAttribute="centerX" id="Y8R-vK-wr4"/>
                                     <constraint firstItem="eLd-Sd-Wxs" firstAttribute="centerX" secondItem="g2z-bq-rmS" secondAttribute="centerX" id="miS-F3-exa"/>
                                     <constraint firstItem="EC5-a4-m5S" firstAttribute="top" secondItem="FNo-5r-SGc" secondAttribute="bottom" constant="35" id="uRs-zD-KUT"/>
                                     <constraint firstItem="FNo-5r-SGc" firstAttribute="centerX" secondItem="g2z-bq-rmS" secondAttribute="centerX" id="vSf-wm-cnP"/>
