@@ -342,8 +342,6 @@ class FirebaseManager{
                 self.delegete?.onNewsDataLoaded(news: news)
             }
         })
-        
-        
     }
     
     func getLocationUpdates(){

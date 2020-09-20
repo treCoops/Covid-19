@@ -494,7 +494,7 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="21.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CTX-fj-dAP" userLabel="Temperature Label">
                                                         <rect key="frame" x="0.0" y="0.0" width="137.5" height="76.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="64"/>
-                                                        <color key="textColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="°" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XIH-gd-Xev" userLabel="Temperature Label">
@@ -506,21 +506,21 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="C" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dk2-aN-wZ3" userLabel="Temperature Label">
                                                         <rect key="frame" x="167" y="0.0" width="42.5" height="75.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="63"/>
-                                                        <color key="textColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <color key="textColor" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="32" minValue="18" maxValue="80" translatesAutoresizingMaskIntoConstraints="NO" id="3A1-ZK-zQF">
+                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="32" minValue="18" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="3A1-ZK-zQF">
                                                 <rect key="frame" x="28" y="94" width="279" height="31"/>
-                                                <color key="tintColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="tintColor" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
                                                     <action selector="tempratureChanged:" destination="VpM-cE-hxl" eventType="valueChanged" id="39K-FL-TeQ"/>
                                                 </connections>
                                             </slider>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rBf-Ad-p0N" customClass="RoundedButton" customModule="Covid_19" customModuleProvider="target">
                                                 <rect key="frame" x="30" y="134" width="275" height="40"/>
-                                                <color key="backgroundColor" red="0.011764705882352941" green="0.74901960784313726" blue="0.43529411764705883" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="backgroundColor" red="0.93725490570000003" green="0.34901961679999999" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Zo7-6R-Zji"/>
                                                 </constraints>

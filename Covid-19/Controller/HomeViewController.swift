@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import MapKit
+import UserNotifications
 
 class HomeViewController: UIViewController {
     
@@ -41,6 +42,8 @@ class HomeViewController: UIViewController {
     
     var mLocation : MapMarker!
     
+    let center = UNUserNotificationCenter.current()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,8 +66,10 @@ class HomeViewController: UIViewController {
         }
         
         
+        
         registerNib()
         addFloatingButton()
+        
         
         fireabaseManager.delegete = self
         indicatorHUD = IndicatorHUD(view: view)
@@ -175,8 +180,6 @@ class HomeViewController: UIViewController {
         self.present(alert, animated: true)
     }
     
-    
-    
 }
 
 extension HomeViewController : UICollectionViewDataSource {
@@ -223,6 +226,7 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
 extension HomeViewController : FirebaseActions{
     func onNewsDataLoaded(news: [News]) {
         self.news = news
+//        print(news.last)
         
         DispatchQueue.main.async {
             self.newsCollectionView.reloadData()
@@ -293,5 +297,4 @@ extension HomeViewController : MKMapViewDelegate{
         return annotionView
     }
 }
-
 
