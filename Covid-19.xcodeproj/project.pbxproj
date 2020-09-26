@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1B0F5E58211E7C2E73628305 /* Pods_Covid_19Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819713DEFAE2E3930BB49E3E /* Pods_Covid_19Tests.framework */; };
+		2615DAE1251F7B4E00BED6AB /* checkBiometricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615DAE0251F7B4E00BED6AB /* checkBiometricsViewController.swift */; };
+		2615DAE3251F7CF300BED6AB /* Biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615DAE2251F7CF300BED6AB /* Biometrics.swift */; };
 		2624871C2511FD9300C73E58 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624871B2511FD9300C73E58 /* FirebaseManager.swift */; };
 		26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410500250F52FC00DD6383 /* AppDelegate.swift */; };
 		26410503250F52FC00DD6383 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410502250F52FC00DD6383 /* SceneDelegate.swift */; };
@@ -75,6 +77,8 @@
 		1049EAA663B029759E515662 /* Pods_Covid_19_Covid_19UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Covid_19UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A4BCDD8E19397E7220352D /* Pods-Covid-19Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19Tests.release.xcconfig"; path = "Target Support Files/Pods-Covid-19Tests/Pods-Covid-19Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1C33567C5118DA6E685DC91E /* Pods-Covid-19Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19Tests.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19Tests/Pods-Covid-19Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		2615DAE0251F7B4E00BED6AB /* checkBiometricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBiometricsViewController.swift; sourceTree = "<group>"; };
+		2615DAE2251F7CF300BED6AB /* Biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biometrics.swift; sourceTree = "<group>"; };
 		2624871B2511FD9300C73E58 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		264104FD250F52FC00DD6383 /* Covid-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		26410500250F52FC00DD6383 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -274,6 +278,7 @@
 				268569742514C7B000447264 /* SurveyViewController.swift */,
 				268569762514CD3600447264 /* SurveyTableViewCell.swift */,
 				2682EC4B251622E000F29365 /* ContactUsViewController.swift */,
+				2615DAE0251F7B4E00BED6AB /* checkBiometricsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,6 +297,7 @@
 			children = (
 				269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */,
 				2624871B2511FD9300C73E58 /* FirebaseManager.swift */,
+				2615DAE2251F7CF300BED6AB /* Biometrics.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -580,6 +586,7 @@
 				26640E362510B99600DFCB11 /* Constraints.swift in Sources */,
 				26640E3A25111A9E00DFCB11 /* SympthonsViewController.swift in Sources */,
 				2641054925109F5300DD6383 /* RoundedView.swift in Sources */,
+				2615DAE3251F7CF300BED6AB /* Biometrics.swift in Sources */,
 				2641053F250FD6AA00DD6383 /* Validator.swift in Sources */,
 				2641054625107B8D00DD6383 /* SettingViewController.swift in Sources */,
 				269761542511EDBC00ADE8A0 /* ImagePickerDelegate.swift in Sources */,
@@ -587,6 +594,7 @@
 				2641053C250FCBE700DD6383 /* KeyboardToolBar.swift in Sources */,
 				26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */,
 				26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */,
+				2615DAE1251F7B4E00BED6AB /* checkBiometricsViewController.swift in Sources */,
 				26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */,
 				26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */,
 				268569712514A67D00447264 /* MapMarker.swift in Sources */,

@@ -20,7 +20,14 @@ class LunchScreenViewController: UIViewController {
         
         if let loggedIn : Bool = UserSession.getUserDefault(key: UserRelated.userLogged){
             if loggedIn {
-                performSegue(withIdentifier: Seagus.splashToHome, sender: nil)
+                
+                if let biometicsEnabled : Bool = UserSession.getUserDefault(key: UserRelated.userBiometricsLogin){
+                    if biometicsEnabled {
+                        performSegue(withIdentifier: Seagus.splashToBiometrics, sender: nil)
+                    }else{
+                        performSegue(withIdentifier: Seagus.splashToHome, sender: nil)
+                    }
+                }
             }else{
                 performSegue(withIdentifier: Seagus.splashToLogin, sender: nil)
             }

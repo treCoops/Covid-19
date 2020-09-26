@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import Firebase
+import LocalAuthentication
 
 class SettingViewController: UIViewController {
     
@@ -17,6 +18,9 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var txtEmail: UILabel!
     @IBOutlet weak var txtRole: UILabel!
     @IBOutlet weak var btnViewSurveyResult: UIButton!
+    @IBOutlet weak var switchBiometricsLogin: UISwitch!
+    @IBOutlet weak var biometricsIndicator: UIStackView!
+    @IBOutlet weak var biometricsLabel: UILabel!
     
     var imagePicker : ImagePicker!
     var fireabaseManager = FirebaseManager()
@@ -25,6 +29,14 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if LAContext().biometricType == .faceID{
+            biometricsLabel.text = "Face ID Login"
+        } else if LAContext().biometricType == .touchID{
+            biometricsLabel.text = "Touch ID Login"
+        } else{
+            biometricsIndicator.alpha = 0
+        }
         
         if let role : String = UserSession.getUserDefault(key: UserRelated.userType){
             if role == "STUDENT"{
@@ -50,6 +62,12 @@ class SettingViewController: UIViewController {
             txtRole.text = role+"  "
         }
         
+        if UserSession.getUserDefault(key: UserRelated.userBiometricsLogin) == true{
+            switchBiometricsLogin.setOn(true, animated: true)
+        }else{
+            switchBiometricsLogin.setOn(false, animated: true)
+        }
+        
         fireabaseManager.delegete = self
 
         imgProfilePic.roundImageView()
@@ -61,6 +79,14 @@ class SettingViewController: UIViewController {
         self.imgProfilePic.addGestureRecognizer(gestureRecognizion)
         
         indicatorHUD = IndicatorHUD(view: view)
+    }
+    @IBAction func biometricsSwitchChanged(_ sender: UISwitch) {
+        if sender.isOn{
+            UserSession.setUserDefault(data: true, key: UserRelated.userBiometricsLogin)
+        }else{
+            UserSession.setUserDefault(data: false, key: UserRelated.userBiometricsLogin)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

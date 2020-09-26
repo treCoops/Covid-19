@@ -13,6 +13,8 @@ struct Seagus {
     static var sympthonsSegue = "sympthonsSegue"
     static var splashToLogin = "splashToLogin"
     static var splashToHome = "splashToHome"
+    static var splashToBiometrics = "splashToBiometrics"
+    static var biometricsToHome = "biometricsToHome"
 }
 
 struct UserRelated {
@@ -23,6 +25,7 @@ struct UserRelated {
     static var userLogged = "USER_LOGGED"
     static var userProfilePic = "USER_PROFILE_PICTURE"
     static var userUID = "USER_UID"
+    static var userBiometricsLogin = "USER_BIOMETRIC_LOGIN"
 }
 
 struct UserRole {

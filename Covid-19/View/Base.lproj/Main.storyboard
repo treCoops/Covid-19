@@ -731,14 +731,14 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m6D-Ty-Zkf">
-                                <rect key="frame" x="10" y="426" width="315" height="1"/>
+                                <rect key="frame" x="10" y="457" width="315" height="1"/>
                                 <color key="backgroundColor" red="0.087584026159999995" green="0.21151024099999999" blue="0.22745668890000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="1" id="IPw-7H-Qu7"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oqo-Ga-MYX">
-                                <rect key="frame" x="40" y="481" width="108" height="27"/>
+                                <rect key="frame" x="40" y="512" width="108" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Change Password">
                                     <color key="titleColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -748,7 +748,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zui-1G-ieW">
-                                <rect key="frame" x="40" y="515" width="116" height="27"/>
+                                <rect key="frame" x="40" y="546" width="116" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="View Survey Result">
                                     <color key="titleColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -758,7 +758,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R3w-8Q-6hZ">
-                                <rect key="frame" x="40" y="549" width="42" height="27"/>
+                                <rect key="frame" x="40" y="580" width="42" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -768,7 +768,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-im-j4C">
-                                <rect key="frame" x="40" y="447" width="67" height="27"/>
+                                <rect key="frame" x="40" y="478" width="67" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                 <state key="normal" title="Contact Us">
                                     <color key="titleColor" red="0.0109009156" green="0.74780875440000005" blue="0.43524780870000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -777,6 +777,23 @@
                                     <segue destination="EOU-l3-eKI" kind="show" id="6Ba-H2-Apl"/>
                                 </connections>
                             </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="195" translatesAutoresizingMaskIntoConstraints="NO" id="Jlp-bz-qVi">
+                                <rect key="frame" x="10" y="416" width="355" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Face ID Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybw-Ce-Wsa">
+                                        <rect key="frame" x="0.0" y="0.0" width="111" height="31"/>
+                                        <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="6bd-Qt-snW">
+                                        <rect key="frame" x="306" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="biometricsSwitchChanged:" destination="s3l-eV-mbH" eventType="valueChanged" id="Q98-DJ-Ikv"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGroupedBackgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -789,10 +806,12 @@
                             <constraint firstItem="H06-JX-oBE" firstAttribute="top" secondItem="b7P-IR-QWj" secondAttribute="bottom" constant="15" id="BN9-yh-C3y"/>
                             <constraint firstItem="R3w-8Q-6hZ" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" constant="40" id="BTe-kn-rF9"/>
                             <constraint firstItem="egJ-LS-LDT" firstAttribute="trailing" secondItem="NEx-b9-Ixy" secondAttribute="trailing" constant="10" id="CiX-00-s66"/>
+                            <constraint firstItem="Jlp-bz-qVi" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" constant="10" id="D93-NU-AYa"/>
                             <constraint firstItem="egJ-LS-LDT" firstAttribute="trailing" secondItem="b7P-IR-QWj" secondAttribute="trailing" id="Dbm-UE-zLh"/>
                             <constraint firstItem="b7P-IR-QWj" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" id="FsF-nD-iYr"/>
-                            <constraint firstItem="m6D-Ty-Zkf" firstAttribute="top" secondItem="NEx-b9-Ixy" secondAttribute="bottom" constant="30" id="GtZ-yD-2Db"/>
+                            <constraint firstItem="Jlp-bz-qVi" firstAttribute="top" secondItem="NEx-b9-Ixy" secondAttribute="bottom" constant="20" id="Ifa-0d-3Hu"/>
                             <constraint firstItem="Oqo-Ga-MYX" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" constant="40" id="Kib-7V-wNz"/>
+                            <constraint firstItem="m6D-Ty-Zkf" firstAttribute="top" secondItem="Jlp-bz-qVi" secondAttribute="bottom" constant="10" id="M24-cn-wRu"/>
                             <constraint firstItem="egJ-LS-LDT" firstAttribute="trailing" secondItem="zui-1G-ieW" secondAttribute="trailing" constant="219" id="TGm-GG-gr1"/>
                             <constraint firstAttribute="trailing" secondItem="m6D-Ty-Zkf" secondAttribute="trailing" constant="50" id="TmC-ye-7RM"/>
                             <constraint firstItem="H06-JX-oBE" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" constant="10" id="U5R-L1-jzm"/>
@@ -803,18 +822,23 @@
                             <constraint firstItem="R3w-8Q-6hZ" firstAttribute="top" secondItem="Oqo-Ga-MYX" secondAttribute="bottom" constant="41" id="h9a-Cf-tw8"/>
                             <constraint firstItem="NEx-b9-Ixy" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" constant="10" id="hKW-a8-DZW"/>
                             <constraint firstItem="Vbj-im-j4C" firstAttribute="leading" secondItem="egJ-LS-LDT" secondAttribute="leading" constant="40" id="kLz-4g-XOR"/>
+                            <constraint firstItem="egJ-LS-LDT" firstAttribute="trailing" secondItem="Jlp-bz-qVi" secondAttribute="trailing" constant="10" id="oMH-No-3iV"/>
                             <constraint firstItem="Oqo-Ga-MYX" firstAttribute="top" secondItem="Vbj-im-j4C" secondAttribute="bottom" constant="7" id="paq-HG-7Zm"/>
                             <constraint firstItem="zui-1G-ieW" firstAttribute="top" secondItem="Oqo-Ga-MYX" secondAttribute="bottom" constant="7" id="qx6-0N-fda"/>
                             <constraint firstItem="egJ-LS-LDT" firstAttribute="trailing" secondItem="H06-JX-oBE" secondAttribute="trailing" constant="50" id="rLE-6M-ZlP"/>
                             <constraint firstItem="egJ-LS-LDT" firstAttribute="trailing" secondItem="cUT-pQ-W5w" secondAttribute="trailing" constant="10" id="sGf-cn-uAq"/>
+                            <constraint firstItem="m6D-Ty-Zkf" firstAttribute="top" secondItem="NEx-b9-Ixy" secondAttribute="bottom" constant="61" id="vWH-ku-Mgx"/>
                             <constraint firstItem="R3w-8Q-6hZ" firstAttribute="top" secondItem="zui-1G-ieW" secondAttribute="bottom" constant="7" id="zPd-Nj-g6V"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="egJ-LS-LDT"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="V75-78-1bT"/>
                     <connections>
+                        <outlet property="biometricsIndicator" destination="Jlp-bz-qVi" id="nkg-Nx-Dgx"/>
+                        <outlet property="biometricsLabel" destination="Ybw-Ce-Wsa" id="MPU-CR-KNb"/>
                         <outlet property="btnViewSurveyResult" destination="zui-1G-ieW" id="r0l-yA-J2d"/>
                         <outlet property="imgProfilePic" destination="5hO-cW-488" id="UmV-1t-Kii"/>
+                        <outlet property="switchBiometricsLogin" destination="6bd-Qt-snW" id="vfp-2B-mHQ"/>
                         <outlet property="txtEmail" destination="SPa-kI-9CP" id="n9U-x9-I6S"/>
                         <outlet property="txtName" destination="Wys-c2-97Q" id="dWC-LY-Zf1"/>
                         <outlet property="txtRole" destination="F92-bD-K3Y" id="f2r-RF-mCZ"/>
@@ -1620,6 +1644,7 @@
                     <connections>
                         <segue destination="17v-fW-Xxi" kind="show" identifier="splashToLogin" id="eMO-3e-P8n"/>
                         <segue destination="QRL-HF-78h" kind="show" identifier="splashToHome" id="nlF-Pk-1QA"/>
+                        <segue destination="HKo-NR-mXK" kind="show" identifier="splashToBiometrics" id="Z8I-O4-Zar"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ngU-wR-S9G" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1644,9 +1669,72 @@
             </objects>
             <point key="canvasLocation" x="128.80000000000001" y="135.38230884557723"/>
         </scene>
+        <!--Check Biometrics View Controller-->
+        <scene sceneID="FKD-Ug-02D">
+            <objects>
+                <viewController id="HKo-NR-mXK" customClass="checkBiometricsViewController" customModule="Covid_19" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yga-vG-QyL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="hu7-bV-Ryr">
+                                <rect key="frame" x="167.5" y="244.5" width="40" height="40"/>
+                                <color key="tintColor" red="0.01176470588" green="0.74901960779999999" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="41.5" id="0pd-0H-EuO"/>
+                                    <constraint firstAttribute="width" constant="40" id="kis-dL-t4g"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Covid 19 Locked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlJ-5O-sJh">
+                                <rect key="frame" x="96.5" y="315.5" width="182.5" height="31.5"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock with Face ID to open Covid 19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iyH-vs-4oa">
+                                <rect key="frame" x="45.5" y="352" width="284" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lAn-K6-14e">
+                                <rect key="frame" x="133.5" y="503" width="108" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <state key="normal" title="Use Face ID">
+                                    <color key="titleColor" red="0.01176470588" green="0.74901960779999999" blue="0.43529411759999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="useButtonPressed:" destination="HKo-NR-mXK" eventType="touchUpInside" id="hEE-A8-UMd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="lAn-K6-14e" firstAttribute="top" secondItem="iyH-vs-4oa" secondAttribute="bottom" constant="130" id="1Wl-Ls-rrn"/>
+                            <constraint firstItem="dlJ-5O-sJh" firstAttribute="centerX" secondItem="Yga-vG-QyL" secondAttribute="centerX" id="D3p-WU-4yl"/>
+                            <constraint firstItem="hu7-bV-Ryr" firstAttribute="top" secondItem="zcO-ut-AfP" secondAttribute="top" constant="200" id="DIT-Iu-9Li"/>
+                            <constraint firstItem="iyH-vs-4oa" firstAttribute="centerX" secondItem="Yga-vG-QyL" secondAttribute="centerX" id="IJT-As-svI"/>
+                            <constraint firstItem="hu7-bV-Ryr" firstAttribute="centerX" secondItem="Yga-vG-QyL" secondAttribute="centerX" id="SG0-6F-JL4"/>
+                            <constraint firstItem="iyH-vs-4oa" firstAttribute="top" secondItem="dlJ-5O-sJh" secondAttribute="bottom" constant="5" id="V3q-Ut-61a"/>
+                            <constraint firstItem="dlJ-5O-sJh" firstAttribute="top" secondItem="hu7-bV-Ryr" secondAttribute="bottom" constant="30" id="XH3-R8-urA"/>
+                            <constraint firstItem="lAn-K6-14e" firstAttribute="centerX" secondItem="Yga-vG-QyL" secondAttribute="centerX" id="aFS-ix-ATv"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="zcO-ut-AfP"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CST-YZ-f0s"/>
+                    <connections>
+                        <outlet property="btnUse" destination="lAn-K6-14e" id="aFc-zn-kmw"/>
+                        <outlet property="lblDescription" destination="iyH-vs-4oa" id="V4l-f9-8wj"/>
+                        <segue destination="QRL-HF-78h" kind="show" identifier="biometricsToHome" id="RXp-ey-I6Q"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DX3-SM-Z3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1921" y="-706"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="riM-TQ-Abg"/>
+        <segue reference="RXp-ey-I6Q"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="170.5" height="170.5"/>

@@ -63,4 +63,11 @@ class PopupDialog {
         let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
         return alert
     }
+    
+    static func generateAlertOnlyOKButton(title: String, msg: String) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: msg, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        return alert
+    }
 }

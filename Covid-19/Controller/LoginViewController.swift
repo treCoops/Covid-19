@@ -82,6 +82,7 @@ extension LoginViewController : FirebaseActions{
     
     func userDataLoaded(user: User) {
         UserSession.saveUserData(user: user)
+        UserSession.setUserDefault(data: false, key: UserRelated.userBiometricsLogin)
         performSegue(withIdentifier: Seagus.loginToHome, sender: nil)
         indicatorHUD.hide()
     }
