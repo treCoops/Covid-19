@@ -225,7 +225,6 @@ extension HomeViewController : UICollectionViewDelegateFlowLayout {
 extension HomeViewController : FirebaseActions{
     func onNewsDataLoaded(news: [News]) {
         self.news = news
-//        print(news.last)
         
         DispatchQueue.main.async {
             self.newsCollectionView.reloadData()

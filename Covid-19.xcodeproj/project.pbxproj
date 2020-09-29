@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B0F5E58211E7C2E73628305 /* Pods_Covid_19Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819713DEFAE2E3930BB49E3E /* Pods_Covid_19Tests.framework */; };
-		2615DAE1251F7B4E00BED6AB /* checkBiometricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615DAE0251F7B4E00BED6AB /* checkBiometricsViewController.swift */; };
+		2615DAE1251F7B4E00BED6AB /* CheckBiometricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615DAE0251F7B4E00BED6AB /* CheckBiometricsViewController.swift */; };
 		2615DAE3251F7CF300BED6AB /* Biometrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2615DAE2251F7CF300BED6AB /* Biometrics.swift */; };
 		2624871C2511FD9300C73E58 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2624871B2511FD9300C73E58 /* FirebaseManager.swift */; };
 		26410501250F52FC00DD6383 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26410500250F52FC00DD6383 /* AppDelegate.swift */; };
@@ -50,6 +50,8 @@
 		2685697B2514D7C400447264 /* Survey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2685697A2514D7C400447264 /* Survey.swift */; };
 		269761542511EDBC00ADE8A0 /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */; };
 		269761562511FA2D00ADE8A0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 269761552511FA2D00ADE8A0 /* GoogleService-Info.plist */; };
+		26D79EF52520BFD700492836 /* SafeAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D79EF42520BFD700492836 /* SafeAction.swift */; };
+		26D79EF72520C07100492836 /* SafeActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D79EF62520C07100492836 /* SafeActionViewController.swift */; };
 		26FF778825132A7A00A1E85D /* IndicatorHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF778725132A7A00A1E85D /* IndicatorHUD.swift */; };
 		26FF778A251336A100A1E85D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26FF7789251336A100A1E85D /* User.swift */; };
 		E5F2BBB5FD164F5C523876B3 /* Pods_Covid_19.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DFC4D45E6F415F46A46674B /* Pods_Covid_19.framework */; };
@@ -77,7 +79,7 @@
 		1049EAA663B029759E515662 /* Pods_Covid_19_Covid_19UITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Covid_19_Covid_19UITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		10A4BCDD8E19397E7220352D /* Pods-Covid-19Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19Tests.release.xcconfig"; path = "Target Support Files/Pods-Covid-19Tests/Pods-Covid-19Tests.release.xcconfig"; sourceTree = "<group>"; };
 		1C33567C5118DA6E685DC91E /* Pods-Covid-19Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19Tests.debug.xcconfig"; path = "Target Support Files/Pods-Covid-19Tests/Pods-Covid-19Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		2615DAE0251F7B4E00BED6AB /* checkBiometricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkBiometricsViewController.swift; sourceTree = "<group>"; };
+		2615DAE0251F7B4E00BED6AB /* CheckBiometricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBiometricsViewController.swift; sourceTree = "<group>"; };
 		2615DAE2251F7CF300BED6AB /* Biometrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biometrics.swift; sourceTree = "<group>"; };
 		2624871B2511FD9300C73E58 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		264104FD250F52FC00DD6383 /* Covid-19.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid-19.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +127,8 @@
 		2685697A2514D7C400447264 /* Survey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Survey.swift; sourceTree = "<group>"; };
 		269761532511EDBC00ADE8A0 /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
 		269761552511FA2D00ADE8A0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		26D79EF42520BFD700492836 /* SafeAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeAction.swift; sourceTree = "<group>"; };
+		26D79EF62520C07100492836 /* SafeActionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafeActionViewController.swift; sourceTree = "<group>"; };
 		26FF778725132A7A00A1E85D /* IndicatorHUD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorHUD.swift; sourceTree = "<group>"; };
 		26FF7789251336A100A1E85D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7D8458B867CEA85282BE8DD6 /* Pods-Covid-19-Covid-19UITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Covid-19-Covid-19UITests.release.xcconfig"; path = "Target Support Files/Pods-Covid-19-Covid-19UITests/Pods-Covid-19-Covid-19UITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -278,7 +282,8 @@
 				268569742514C7B000447264 /* SurveyViewController.swift */,
 				268569762514CD3600447264 /* SurveyTableViewCell.swift */,
 				2682EC4B251622E000F29365 /* ContactUsViewController.swift */,
-				2615DAE0251F7B4E00BED6AB /* checkBiometricsViewController.swift */,
+				2615DAE0251F7B4E00BED6AB /* CheckBiometricsViewController.swift */,
+				26D79EF62520C07100492836 /* SafeActionViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				2685696E2514762400447264 /* MapLocation.swift */,
 				2685697A2514D7C400447264 /* Survey.swift */,
 				2682EC492516046200F29365 /* News.swift */,
+				26D79EF42520BFD700492836 /* SafeAction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -581,6 +587,8 @@
 				2682EC4C251622E000F29365 /* ContactUsViewController.swift in Sources */,
 				268569752514C7B000447264 /* SurveyViewController.swift in Sources */,
 				2685696F2514762400447264 /* MapLocation.swift in Sources */,
+				26D79EF72520C07100492836 /* SafeActionViewController.swift in Sources */,
+				26D79EF52520BFD700492836 /* SafeAction.swift in Sources */,
 				2682EC4A2516046200F29365 /* News.swift in Sources */,
 				26640E382510D0AD00DFCB11 /* RoundedLabel.swift in Sources */,
 				26640E362510B99600DFCB11 /* Constraints.swift in Sources */,
@@ -594,7 +602,7 @@
 				2641053C250FCBE700DD6383 /* KeyboardToolBar.swift in Sources */,
 				26640E4B2511525C00DFCB11 /* NewsCell.swift in Sources */,
 				26410534250F9A8100DD6383 /* RoundedButton.swift in Sources */,
-				2615DAE1251F7B4E00BED6AB /* checkBiometricsViewController.swift in Sources */,
+				2615DAE1251F7B4E00BED6AB /* CheckBiometricsViewController.swift in Sources */,
 				26410536250FA8D900DD6383 /* RoundedImageView.swift in Sources */,
 				26640E3E251123F300DFCB11 /* ChangeNavBarTintColor.swift in Sources */,
 				268569712514A67D00447264 /* MapMarker.swift in Sources */,

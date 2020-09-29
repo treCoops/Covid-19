@@ -40,4 +40,61 @@ class Covid_19UITests: XCTestCase {
             }
         }
     }
+    
+    func testSurvey() throws {
+        
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Update"].tap()
+        app.buttons["next"].tap()
+        
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        element.children(matching: .other).element(boundBy: 0)/*@START_MENU_TOKEN@*/.buttons["Medium"]/*[[".segmentedControls.buttons[\"Medium\"]",".buttons[\"Medium\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let element2 = element.children(matching: .other).element(boundBy: 1)
+        element2/*@START_MENU_TOKEN@*/.buttons["Medium"]/*[[".segmentedControls.buttons[\"Medium\"]",".buttons[\"Medium\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        let element3 = element.children(matching: .other).element(boundBy: 2)
+        element3/*@START_MENU_TOKEN@*/.buttons["High"]/*[[".segmentedControls.buttons[\"High\"]",".buttons[\"High\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        element3/*@START_MENU_TOKEN@*/.buttons["Medium"]/*[[".segmentedControls.buttons[\"Medium\"]",".buttons[\"Medium\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        element2/*@START_MENU_TOKEN@*/.buttons["High"]/*[[".segmentedControls.buttons[\"High\"]",".buttons[\"High\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["UPDATE"]/*[[".buttons[\"UPDATE\"].staticTexts[\"UPDATE\"]",".staticTexts[\"UPDATE\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+        
+    }
+    
+    
+    func testViewsSurveyResults() throws {
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Settings"].tap()
+        app/*@START_MENU_TOKEN@*/.staticTexts["View Survey Result"]/*[[".buttons[\"View Survey Result\"].staticTexts[\"View Survey Result\"]",".staticTexts[\"View Survey Result\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["By Date"]/*[[".segmentedControls.buttons[\"By Date\"]",".buttons[\"By Date\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["By Score"]/*[[".segmentedControls.buttons[\"By Score\"]",".buttons[\"By Score\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+    }
+    
+    func testTempUpdate() throws {
+        
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Update"].tap()
+        app.sliders["33%"].swipeRight()
+        app.buttons["UPDATE"].tap()
+        app.alerts["Success"].scrollViews.otherElements.buttons["OK"].tap()
+        
+        
+    }
+    
+    func testNewsPush() throws {
+        
+        let app = XCUIApplication()
+        app.launch()
+        app.tabBars.buttons["Update"].tap()
+        app.buttons["add"].tap()
+        
+        let elementsQuery = app.alerts["Push News"].scrollViews.otherElements
+        elementsQuery.collectionViews/*@START_MENU_TOKEN@*/.textFields["Enter your news!"]/*[[".cells.textFields[\"Enter your news!\"]",".textFields[\"Enter your news!\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        elementsQuery.buttons["Push"].tap()
+        
+    }
 }
